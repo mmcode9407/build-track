@@ -1,6 +1,7 @@
-﻿import { css } from "styled-components";
+﻿import type { Spacing } from "styled-components";
+import { css } from "styled-components";
 
-import type { theme } from "./theme";
+type Size = keyof Spacing;
 
 const flexCenteredRow = css`
   display: flex;
@@ -15,22 +16,22 @@ const flexCentredColumn = css`
   align-items: center;
 `;
 
-const paddingX = (size: keyof typeof theme.padding) => css`
+const paddingX = (size: Size) => css`
   padding-left: ${({ theme }) => theme.padding[size]};
   padding-right: ${({ theme }) => theme.padding[size]};
 `;
 
-const paddingY = (size: keyof typeof theme.padding) => css`
+const paddingY = (size: Size) => css`
   padding-top: ${({ theme }) => theme.padding[size]};
   padding-bottom: ${({ theme }) => theme.padding[size]};
 `;
 
-const marginX = (size: keyof typeof theme.margin) => css`
+const marginX = (size: Size) => css`
   margin-left: ${({ theme }) => theme.margin[size]};
   margin-right: ${({ theme }) => theme.margin[size]};
 `;
 
-const marginY = (size: keyof typeof theme.margin) => css`
+const marginY = (size: Size) => css`
   margin-top: ${({ theme }) => theme.margin[size]};
   margin-bottom: ${({ theme }) => theme.margin[size]};
 `;

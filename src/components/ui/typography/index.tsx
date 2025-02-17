@@ -1,15 +1,15 @@
-﻿import type { CSSProperties, ReactNode } from "react";
+﻿import type { ReactNode } from "react";
+import type { Colors } from "styled-components";
 
-import type { theme } from "../../../styles/theme";
 import * as S from "./styled";
 
 type TypographyProps = {
   variant?: S.TypographyVariants;
+  color?: keyof Colors;
   children: ReactNode;
-  color?: keyof typeof theme.colors;
 };
 
-const Typography = ({ variant = "body-1", children, color }: TypographyProps & CSSProperties) => {
+const Typography = ({ variant = "body-1", color = "primary", children }: TypographyProps) => {
   const Tag = S.typographyStyles[variant].tag;
 
   return (

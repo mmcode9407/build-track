@@ -1,4 +1,6 @@
-﻿export const theme = {
+﻿import type { DefaultTheme } from "styled-components";
+
+export const theme: DefaultTheme = {
   fontSize: {
     xs: "0.75rem",
     sm: "0.875rem",
@@ -97,4 +99,4 @@
     popover: 200,
     tooltip: 1000,
   },
-} as const;
+};

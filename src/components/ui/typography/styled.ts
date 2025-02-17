@@ -1,11 +1,13 @@
-﻿import styled, { css } from "styled-components";
+﻿import type { CSSProperties } from "react";
+import type { Colors, Typography } from "styled-components";
+import styled, { css } from "styled-components";
 
 type VariantStyle = {
   tag: keyof React.JSX.IntrinsicElements;
-  size: string;
-  weight: string;
-  lineHeight: string;
-  textTransform?: string;
+  size: keyof Typography["fontSize"];
+  weight: keyof Typography["fontWeight"];
+  lineHeight: keyof Typography["lineHeight"];
+  textTransform?: CSSProperties["textTransform"];
 };
 
 export type TypographyVariants =
@@ -25,7 +27,7 @@ export type TypographyVariants =
 
 type StyledTypographyProps = {
   variant: TypographyVariants;
-  color?: string;
+  color?: keyof Colors;
 };
 
 export const typographyStyles: Record<TypographyVariants, VariantStyle> = {
