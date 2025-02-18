@@ -26,8 +26,8 @@ export type TypographyVariants =
   | "overline";
 
 type StyledTypographyProps = {
-  variant: TypographyVariants;
-  color?: keyof Colors;
+  $variant: TypographyVariants;
+  $color?: keyof Colors;
 };
 
 export const typographyStyles: Record<TypographyVariants, VariantStyle> = {
@@ -52,8 +52,8 @@ export const typographyStyles: Record<TypographyVariants, VariantStyle> = {
   },
 };
 
-const getTypographyStyles = (styles: typeof typographyStyles, variant: TypographyVariants) => {
-  const { size, weight, lineHeight, textTransform } = styles[variant];
+const getTypographyStyles = (styles: typeof typographyStyles, $variant: TypographyVariants) => {
+  const { size, weight, lineHeight, textTransform } = styles[$variant];
 
   return css`
     font-size: ${({ theme }) => theme.fontSize[size]};
@@ -64,6 +64,6 @@ const getTypographyStyles = (styles: typeof typographyStyles, variant: Typograph
 };
 
 export const StyledTypography = styled.p<StyledTypographyProps>`
-  ${({ variant }) => getTypographyStyles(typographyStyles, variant)};
-  color: ${({ theme, color }) => (color ? theme.colors[color] : theme.colors.primary)};
+  ${({ $variant }) => getTypographyStyles(typographyStyles, $variant)};
+  color: ${({ theme, $color }) => ($color ? theme.colors[$color] : theme.colors.primary)};
 `;
