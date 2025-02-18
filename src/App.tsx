@@ -1,6 +1,6 @@
 import { ThemeProvider } from "styled-components";
 
-import { Typography } from "./components/ui/typography";
+import { Typography } from "./components/ui/Typography/Typography";
 import { GlobalStyles } from "./styles/globalStyles";
 import { theme } from "./styles/theme";
 

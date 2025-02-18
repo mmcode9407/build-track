@@ -1,7 +1,7 @@
 ﻿import type { ReactNode } from "react";
 import type { Colors } from "styled-components";
 
-import * as S from "./styled";
+import * as S from "./Typography.styled";
 
 type TypographyProps = {
   variant?: S.TypographyVariants;
@@ -13,7 +13,7 @@ const Typography = ({ variant = "body-1", color = "primary", children }: Typogra
   const Tag = S.typographyStyles[variant].tag;
 
   return (
-    <S.StyledTypography as={Tag} variant={variant} color={color}>
+    <S.StyledTypography as={Tag} $variant={variant} $color={color}>
       {children}
     </S.StyledTypography>
   );
