@@ -90,6 +90,7 @@ declare module "styled-components" {
     };
     opacity: {
       hover: number;
+      secondaryHover: number;
       none: number;
     };
   }
@@ -98,6 +99,7 @@ declare module "styled-components" {
     colors: Colors;
     padding: Spacing;
     margin: Spacing;
+    gap: Spacing;
     breakpoints: Layout["breakpoints"];
     borders: Layout["borders"];
     zIndex: Layout["zIndex"];
