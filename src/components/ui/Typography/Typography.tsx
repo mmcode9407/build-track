@@ -13,13 +13,13 @@ type TypographyProps = {
 const Typography = ({
   variant = "body-1",
   color = "primary",
+  align,
   children,
-  ...props
 }: TypographyProps) => {
   const Tag = S.typographyStyles[variant].tag;
 
   return (
-    <S.StyledTypography as={Tag} $variant={variant} $color={color} {...props}>
+    <S.StyledTypography as={Tag} $variant={variant} $color={color} $align={align}>
       {children}
     </S.StyledTypography>
   );
