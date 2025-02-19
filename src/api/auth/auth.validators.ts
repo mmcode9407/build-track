@@ -17,4 +17,9 @@ const SignUpFormSchema = z
     }
   });
 
-export { SignUpFormSchema };
+const SignInFormSchema = z.object({
+  email: z.string().min(1, "Email is required").email("Email is invalid"),
+  password: z.string().min(1, "Password is required").min(8, "Password is too short."),
+});
+
+export { SignInFormSchema, SignUpFormSchema };
