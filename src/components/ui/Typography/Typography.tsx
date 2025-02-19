@@ -1,4 +1,4 @@
-﻿import type { ReactNode } from "react";
+﻿import type { CSSProperties, ReactNode } from "react";
 import type { Colors } from "styled-components";
 
 import * as S from "./Typography.styled";
@@ -6,14 +6,20 @@ import * as S from "./Typography.styled";
 type TypographyProps = {
   variant?: S.TypographyVariants;
   color?: keyof Colors;
+  align?: CSSProperties["textAlign"];
   children: ReactNode;
 };
 
-const Typography = ({ variant = "body-1", color = "primary", children }: TypographyProps) => {
+const Typography = ({
+  variant = "body-1",
+  color = "primary",
+  children,
+  ...props
+}: TypographyProps) => {
   const Tag = S.typographyStyles[variant].tag;
 
   return (
-    <S.StyledTypography as={Tag} $variant={variant} $color={color}>
+    <S.StyledTypography as={Tag} $variant={variant} $color={color} {...props}>
       {children}
     </S.StyledTypography>
   );

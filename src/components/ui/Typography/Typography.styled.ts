@@ -28,6 +28,7 @@ export type TypographyVariants =
 type StyledTypographyProps = {
   $variant: TypographyVariants;
   $color?: keyof Colors;
+  $align?: CSSProperties["textAlign"];
 };
 
 export const typographyStyles: Record<TypographyVariants, VariantStyle> = {
@@ -66,4 +67,5 @@ const getTypographyStyles = (styles: typeof typographyStyles, $variant: Typograp
 export const StyledTypography = styled.p<StyledTypographyProps>`
   ${({ $variant }) => getTypographyStyles(typographyStyles, $variant)};
   color: ${({ theme, $color }) => ($color ? theme.colors[$color] : theme.colors.primary)};
+  text-align: ${({ $align }) => $align && $align};
 `;

@@ -9,7 +9,7 @@ const flexCenteredRow = css`
   align-items: center;
 `;
 
-const flexCentredColumn = css`
+const flexCenteredColumn = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,4 +36,4 @@ const marginY = (size: Size) => css`
   margin-bottom: ${({ theme }) => theme.margin[size]};
 `;
 
-export { flexCenteredRow, flexCentredColumn, marginX, marginY, paddingX, paddingY };
+export { flexCenteredColumn, flexCenteredRow, marginX, marginY, paddingX, paddingY };
