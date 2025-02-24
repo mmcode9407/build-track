@@ -7,15 +7,10 @@ type ButtonProps = React.ComponentProps<typeof AriaButton> & {
   variant?: ButtonVariants;
   size?: ButtonSizes;
   width?: CSSProperties["width"];
-  children: React.ReactNode;
 };
 
-const Button = ({ children, variant = "primary", size = "md", width, ...props }: ButtonProps) => {
-  return (
-    <StyledButton $variant={variant} $size={size} $width={width} {...props}>
-      {children}
-    </StyledButton>
-  );
+const Button = ({ variant = "primary", size = "md", width, ...props }: ButtonProps) => {
+  return <StyledButton $variant={variant} $size={size} $width={width} {...props} />;
 };
 
 export { Button };

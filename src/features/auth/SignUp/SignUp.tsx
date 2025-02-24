@@ -1,13 +1,22 @@
 ﻿import * as SCard from "@components/ui/Card/Card.styled";
 import * as SLink from "@components/ui/Link/Link.styled";
+import type { SubmitHandler } from "react-hook-form";
 
+import type { SignUpFormSchemaType } from "@/api/auth/auth.types";
 import AuthPlaceholder from "@/assets/images/auth-placeholder.png";
 import { Typography } from "@/components/ui/Typography/Typography";
+import { useSignUp } from "@/features/auth/SignUp/hooks";
 
 import * as S from "./SignUp.styled";
 import { SignUpForm } from "./SignUpForm";
 
 const SignUp = () => {
+  const { signUp, isPending } = useSignUp();
+
+  const onSubmit: SubmitHandler<SignUpFormSchemaType> = (values) => {
+    signUp(values);
+  };
+
   return (
     <>
       <S.InnerContainer>
@@ -21,7 +30,7 @@ const SignUp = () => {
           </SCard.CardHeader>
 
           <SCard.CardContent>
-            <SignUpForm />
+            <SignUpForm onSubmit={onSubmit} isPending={isPending} />
           </SCard.CardContent>
 
           <SCard.CardFooter>

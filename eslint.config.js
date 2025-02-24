@@ -6,6 +6,7 @@ import tseslint from "typescript-eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import pluginRouter from "@tanstack/eslint-plugin-router";
+import pluginQuery from "@tanstack/eslint-plugin-query";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -15,6 +16,7 @@ export default tseslint.config(
       ...tseslint.configs.recommended,
       eslintConfigPrettier,
       ...pluginRouter.configs["flat/recommended"],
+      ...pluginQuery.configs["flat/recommended"],
     ],
     files: ["src/**/*.{ts,tsx}"],
     languageOptions: {

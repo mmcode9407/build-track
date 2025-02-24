@@ -128,4 +128,8 @@ export const StyledButton = styled(AriaButton)<StyledButtonProps>`
     text-decoration 0.3s ease-in-out,
     background-color 0.3s ease-in-out,
     color 0.3s ease-in-out;
+
+  &:disabled {
+    opacity: ${({ theme }) => theme.opacity.secondaryHover};
+  }
 `;

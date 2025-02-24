@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -8,6 +9,8 @@ import { GlobalStyles } from "./styles/globalStyles";
 import { theme } from "./styles/theme";
 
 const router = createRouter({ routeTree, scrollRestoration: true });
+
+const queryClient = new QueryClient();
 
 declare module "@tanstack/react-router" {
   interface Register {
@@ -22,11 +25,13 @@ if (!rootElement.innerHTML) {
 
   root.render(
     <StrictMode>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
 
-        <RouterProvider router={router} />
-      </ThemeProvider>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </QueryClientProvider>
     </StrictMode>,
   );
 }
