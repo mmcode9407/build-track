@@ -1,16 +1,12 @@
-﻿import type { SupabaseClient } from "@supabase/supabase-js";
-
-import type { SignUpMutationArgs } from "@/api/auth/auth.types";
-
-// const BASE_URL = import.meta.env.VITE_BASE_URL;
+﻿import type { SignInMutationArgs, SignUpMutationArgs } from "@/api/auth/auth.types";
+import { supabase } from "@/libs/supabase";
 
 export const authMutations = {
-  signUpMutation: (client: SupabaseClient) => async (data: SignUpMutationArgs) => {
-    const { error } = await client.auth.signUp({
+  signUpMutation: async (data: SignUpMutationArgs) => {
+    const { error } = await supabase.auth.signUp({
       email: data.email,
       password: data.password,
       options: {
-        // emailRedirectTo: `${BASE_URL}/sign-in`,
         data: {
           username: data.username,
         },
@@ -21,4 +17,14 @@ export const authMutations = {
       throw Error(error.message);
     }
   },
-};
+  signInMutation: async (data: SignInMutationArgs) => {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
+    });
+
+    if (error) {
+      throw Error(error.message);
+    }
+  },
+} as const;

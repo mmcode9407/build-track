@@ -3,23 +3,24 @@ import { useNavigate } from "@tanstack/react-router";
 
 import { authMutations } from "@/api/auth/auth.mutations";
 
-const useSignUp = () => {
+const useSignIn = () => {
   const navigate = useNavigate();
   const {
-    mutate: signUp,
+    mutate: signIn,
     isPending,
     isSuccess,
   } = useMutation({
-    mutationFn: authMutations.signUpMutation,
+    mutationFn: authMutations.signInMutation,
     onSuccess: () => {
-      navigate({ to: "/sign-in" });
+      navigate({ to: "/" });
+      console.log("zalogowano pomyslnie");
     },
     onError: (error) => {
       console.error(error.message);
     },
   });
 
-  return { signUp, isPending, isSuccess };
+  return { signIn, isPending, isSuccess };
 };
 
-export { useSignUp };
+export { useSignIn };

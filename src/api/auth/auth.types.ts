@@ -6,3 +6,6 @@ export type SignUpFormSchemaType = z.infer<typeof SignUpFormSchema>;
 export type SignUpMutationArgs = Omit<z.infer<typeof SignUpFormSchema>, "password_confirm">;
 
 export type SignInFormSchemaType = z.infer<typeof SignInFormSchema>;
+export type SignInMutationArgs = z.infer<typeof SignInFormSchema>;
+
+export type GetMeUserResponse = { username: string; email: string; id: string };

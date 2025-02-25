@@ -5,16 +5,21 @@ import { useForm } from "react-hook-form";
 
 import type { SignInFormSchemaType } from "@/api/auth/auth.types";
 import { SignInFormSchema } from "@/api/auth/auth.validators";
-import { Button } from "@/components/ui/Button/Button";
 import { Input } from "@/components/ui/Input/Input";
 import { Label } from "@/components/ui/Label/Label";
 import { FormMessage } from "@/features/auth/Shared/FormMessage";
+import { SubmitButton } from "@/features/auth/Shared/SubmitButton";
 
 import { Form } from "../Shared/Form";
 import { FormField } from "../Shared/FormField";
 import * as S from "./SignInForm.styled";
 
-const SignInForm = () => {
+type SignInFormProps = {
+  onSubmit: SubmitHandler<SignInFormSchemaType>;
+  isPending: boolean;
+};
+
+const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
   const {
     register,
     handleSubmit,
@@ -28,11 +33,6 @@ const SignInForm = () => {
       password: "",
     },
   });
-
-  const onSubmit: SubmitHandler<SignInFormSchemaType> = (values) => {
-    // TODO: implement signin api call
-    console.log(values);
-  };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -70,9 +70,7 @@ const SignInForm = () => {
         <FormMessage>{errors.password?.message}</FormMessage>
       </FormField>
 
-      <Button type="submit" size="sm" width="100%">
-        Sign In
-      </Button>
+      <SubmitButton size="sm" width="100%" label="Sign in" isPending={isPending} />
     </Form>
   );
 };
