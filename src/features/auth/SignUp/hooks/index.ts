@@ -1,5 +1,6 @@
 ﻿import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
+import { toast } from "react-toastify";
 
 import { authMutations } from "@/api/auth/auth.mutations";
 
@@ -12,10 +13,12 @@ const useSignUp = () => {
   } = useMutation({
     mutationFn: authMutations.signUpMutation,
     onSuccess: () => {
+      toast.success("Sign up successfully");
       navigate({ to: "/sign-in" });
     },
     onError: (error) => {
-      console.error(error.message);
+      toast.error(error.message);
+      console.error("Error during signing in: ", error);
     },
   });
 

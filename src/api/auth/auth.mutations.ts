@@ -14,7 +14,7 @@ export const authMutations = {
     });
 
     if (error) {
-      throw Error(error.message);
+      throw error;
     }
   },
   signInMutation: async (data: SignInMutationArgs) => {
@@ -24,7 +24,7 @@ export const authMutations = {
     });
 
     if (error) {
-      throw Error(error.message);
+      throw error;
     }
   },
 } as const;

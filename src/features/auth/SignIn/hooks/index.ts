@@ -1,5 +1,6 @@
 ﻿import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
+import { toast } from "react-toastify";
 
 import { authMutations } from "@/api/auth/auth.mutations";
 
@@ -12,11 +13,12 @@ const useSignIn = () => {
   } = useMutation({
     mutationFn: authMutations.signInMutation,
     onSuccess: () => {
+      toast.success("Sign in successfully");
       navigate({ to: "/" });
-      console.log("zalogowano pomyslnie");
     },
     onError: (error) => {
-      console.error(error.message);
+      toast.error(error.message);
+      console.error("Error during signing in: ", error);
     },
   });
 

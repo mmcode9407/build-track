@@ -7,7 +7,7 @@ const getCurrentUser = async (): Promise<GetMeUserResponse> => {
   const { data, error } = await supabase.auth.getUser();
 
   if (error) {
-    throw Error(error.message);
+    throw error;
   }
 
   const mappedUser: GetMeUserResponse = {

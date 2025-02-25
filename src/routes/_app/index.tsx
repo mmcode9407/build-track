@@ -1,7 +1,7 @@
 ﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/Button/Button";
-import { useUser } from "@/hooks/useUser";
+import { useUser } from "@/features/auth/Shared/hooks/useUser";
 import { supabase } from "@/libs/supabase";
 
 export const Route = createFileRoute("/_app/")({
