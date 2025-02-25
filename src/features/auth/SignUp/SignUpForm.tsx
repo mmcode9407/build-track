@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import type { SignUpFormSchemaType } from "@/api/auth/auth.types";
 import { SignUpFormSchema } from "@/api/auth/auth.validators";
 import { Input } from "@/components/ui/Input/Input";
+import { PasswordInput } from "@/components/ui/Input/PasswordInput";
 import { Label } from "@/components/ui/Label/Label";
 import { SubmitButton } from "@/features/auth/Shared/SubmitButton";
 
@@ -66,9 +67,8 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
       <FormField>
         <Label htmlFor="password">Password</Label>
 
-        <Input
+        <PasswordInput
           id="password"
-          type="password"
           placeholder="Type your password"
           {...register("password")}
           aria-invalid={errors.password ? true : false}
@@ -80,9 +80,8 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
       <FormField>
         <Label htmlFor="password_confirm">Repeat Password</Label>
 
-        <Input
+        <PasswordInput
           id="password_confirm"
-          type="password"
           placeholder="Confirm your password"
           {...register("password_confirm")}
           aria-invalid={errors.password_confirm ? true : false}

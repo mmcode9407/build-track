@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import type { SignInFormSchemaType } from "@/api/auth/auth.types";
 import { SignInFormSchema } from "@/api/auth/auth.validators";
 import { Input } from "@/components/ui/Input/Input";
+import { PasswordInput } from "@/components/ui/Input/PasswordInput";
 import { Label } from "@/components/ui/Label/Label";
 import { FormMessage } from "@/features/auth/Shared/FormMessage";
 import { SubmitButton } from "@/features/auth/Shared/SubmitButton";
@@ -59,9 +60,8 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
           </SLink.Link>
         </S.LabelContainer>
 
-        <Input
+        <PasswordInput
           id="password"
-          type="password"
           placeholder="Type your password"
           {...register("password")}
           aria-invalid={errors.password ? true : false}
