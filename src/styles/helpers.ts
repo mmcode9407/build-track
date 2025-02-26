@@ -36,4 +36,11 @@ const marginY = (size: Size) => css`
   margin-bottom: ${({ theme }) => theme.margin[size]};
 `;
 
-export { flexCenteredColumn, flexCenteredRow, marginX, marginY, paddingX, paddingY };
+export {
+  flexCenteredColumn,
+  flexCenteredRow,
+  marginX,
+  marginY,
+  paddingX,
+  paddingY,
+};

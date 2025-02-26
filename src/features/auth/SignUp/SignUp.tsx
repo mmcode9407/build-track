@@ -25,7 +25,8 @@ const SignUp = () => {
             <Typography variant="h4">Create account</Typography>
 
             <Typography variant="body-1" color="mutedForeground" align="center">
-              Create your account and let's start save money with your BuildTrack
+              Create your account and let's start save money with your
+              BuildTrack
             </Typography>
           </SCard.CardHeader>
 
@@ -35,7 +36,8 @@ const SignUp = () => {
 
           <SCard.CardFooter>
             <Typography variant="caption" color="mutedForeground">
-              Already have an account? <SLink.Link to="/sign-in">Sign In</SLink.Link>
+              Already have an account?{" "}
+              <SLink.Link to="/sign-in">Sign In</SLink.Link>
             </Typography>
           </SCard.CardFooter>
         </SCard.Card>

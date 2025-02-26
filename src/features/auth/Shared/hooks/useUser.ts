@@ -6,7 +6,8 @@ import { authQueries } from "@/api/auth/auth.queries";
 export const useUser = () => {
   const queryClient = useQueryClient();
 
-  const resetUser = () => queryClient.removeQueries({ queryKey: authQueries.me().queryKey });
+  const resetUser = () =>
+    queryClient.removeQueries({ queryKey: authQueries.me().queryKey });
 
   const { data: user, error } = useQuery({
     ...authQueries.me(),

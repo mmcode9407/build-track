@@ -5,7 +5,12 @@ import styled, { css } from "styled-components";
 
 import { flexCenteredRow, paddingX, paddingY } from "../../../styles/helpers";
 
-export type ButtonVariants = "primary" | "secondary" | "outline" | "link" | "withIcon";
+export type ButtonVariants =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "link"
+  | "withIcon";
 export type ButtonSizes = "sm" | "md" | "lg" | "icon";
 
 const getButtonStyles = (variant: ButtonVariants, theme: DefaultTheme) => {

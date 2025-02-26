@@ -34,7 +34,8 @@ const SignIn = () => {
 
           <SCard.CardFooter>
             <Typography variant="caption" color="mutedForeground">
-              Don't have an account? <SLink.Link to="/sign-up">Sign Up</SLink.Link>
+              Don't have an account?{" "}
+              <SLink.Link to="/sign-up">Sign Up</SLink.Link>
             </Typography>
           </SCard.CardFooter>
         </SCard.Card>

@@ -70,7 +70,12 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
         <FormMessage>{errors.password?.message}</FormMessage>
       </FormField>
 
-      <SubmitButton size="sm" width="100%" label="Sign in" isPending={isPending} />
+      <SubmitButton
+        size="sm"
+        width="100%"
+        label="Sign in"
+        isPending={isPending}
+      />
     </Form>
   );
 };

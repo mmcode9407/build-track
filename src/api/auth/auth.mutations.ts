@@ -1,4 +1,7 @@
-﻿import type { SignInMutationArgs, SignUpMutationArgs } from "@/api/auth/auth.types";
+﻿import type {
+  SignInMutationArgs,
+  SignUpMutationArgs,
+} from "@/api/auth/auth.types";
 import { supabase } from "@/libs/supabase";
 
 export const authMutations = {

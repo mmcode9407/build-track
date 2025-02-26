@@ -3,7 +3,8 @@ import type { Colors } from "styled-components";
 import styled from "styled-components";
 
 export const Link = styled(RLink)<{ $color?: keyof Colors; $small?: boolean }>`
-  color: ${({ $color, theme }) => ($color ? theme.colors[$color] : theme.colors.mutedForeground)};
+  color: ${({ $color, theme }) =>
+    $color ? theme.colors[$color] : theme.colors.mutedForeground};
   font-size: ${({ $small, theme }) => $small && theme.fontSize.xs};
   text-decoration: underline;
   text-decoration-color: transparent;

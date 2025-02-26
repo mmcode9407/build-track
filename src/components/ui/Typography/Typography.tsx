@@ -19,7 +19,11 @@ const Typography = ({
   const Tag = S.typographyStyles[variant].tag;
 
   return (
-    <S.StyledTypography as={Tag} $variant={variant} $color={color} $align={align}>
+    <S.StyledTypography
+      as={Tag}
+      $variant={variant}
+      $color={color}
+      $align={align}>
       {children}
     </S.StyledTypography>
   );
