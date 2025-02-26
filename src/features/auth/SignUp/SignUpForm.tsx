@@ -2,16 +2,18 @@
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 
-import type { SignUpFormSchemaType } from "@/api/auth/auth.types";
-import { SignUpFormSchema } from "@/api/auth/auth.validators";
+import {
+  SignUpFormSchema,
+  type SignUpFormSchemaType,
+} from "@/api/auth/useSignUpMutation";
 import { Input } from "@/components/ui/Input/Input";
 import { PasswordInput } from "@/components/ui/Input/PasswordInput";
 import { Label } from "@/components/ui/Label/Label";
-import { SubmitButton } from "@/features/auth/Shared/SubmitButton";
 
 import { Form } from "../Shared/Form";
 import { FormField } from "../Shared/FormField";
 import { FormMessage } from "../Shared/FormMessage";
+import { SubmitButton } from "../Shared/SubmitButton";
 
 type SignUpFormProps = {
   onSubmit: SubmitHandler<SignUpFormSchemaType>;

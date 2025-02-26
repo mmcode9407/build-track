@@ -1,20 +1,34 @@
 ﻿import * as SCard from "@components/ui/Card/Card.styled";
 import * as SLink from "@components/ui/Link/Link.styled";
+import { useNavigate } from "@tanstack/react-router";
 import type { SubmitHandler } from "react-hook-form";
+import { toast } from "react-toastify";
 
-import type { SignUpFormSchemaType } from "@/api/auth/auth.types";
+import {
+  type SignUpFormSchemaType,
+  useSignUpMutation,
+} from "@/api/auth/useSignUpMutation";
 import AuthPlaceholder from "@/assets/images/auth-placeholder.png";
 import { Typography } from "@/components/ui/Typography/Typography";
-import { useSignUp } from "@/features/auth/SignUp/hooks";
 
 import * as S from "./SignUp.styled";
 import { SignUpForm } from "./SignUpForm";
 
 const SignUp = () => {
-  const { signUp, isPending } = useSignUp();
+  const { mutate: signUp, isPending } = useSignUpMutation();
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<SignUpFormSchemaType> = (values) => {
-    signUp(values);
+    signUp(values, {
+      onSuccess: () => {
+        toast.success("Signed up successfully");
+        navigate({ to: "/sign-in" });
+      },
+      onError: (error) => {
+        toast.error(error.message);
+        console.error("Error during signing in: ", error);
+      },
+    });
   };
 
   return (

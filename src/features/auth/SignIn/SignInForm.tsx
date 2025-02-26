@@ -3,16 +3,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 
-import type { SignInFormSchemaType } from "@/api/auth/auth.types";
-import { SignInFormSchema } from "@/api/auth/auth.validators";
+import {
+  SignInFormSchema,
+  type SignInFormSchemaType,
+} from "@/api/auth/useSignInMutation";
 import { Input } from "@/components/ui/Input/Input";
 import { PasswordInput } from "@/components/ui/Input/PasswordInput";
 import { Label } from "@/components/ui/Label/Label";
-import { FormMessage } from "@/features/auth/Shared/FormMessage";
-import { SubmitButton } from "@/features/auth/Shared/SubmitButton";
 
 import { Form } from "../Shared/Form";
 import { FormField } from "../Shared/FormField";
+import { FormMessage } from "../Shared/FormMessage";
+import { SubmitButton } from "../Shared/SubmitButton";
 import * as S from "./SignInForm.styled";
 
 type SignInFormProps = {

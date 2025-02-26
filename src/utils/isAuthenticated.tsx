@@ -1,9 +1,9 @@
-﻿import { supabase } from "@/libs/supabase";
+﻿import { supabaseClient } from "@/libs/supabaseClient";
 
 export const isAuthenticated = async () => {
   const {
     data: { session },
-  } = await supabase.auth.getSession();
+  } = await supabaseClient.auth.getSession();
 
   return !!session;
 };
