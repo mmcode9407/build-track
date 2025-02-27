@@ -1,12 +1,12 @@
 ﻿import type { CSSProperties } from "react";
-import type { Colors, Typography } from "styled-components";
+import type { DefaultTheme } from "styled-components";
 import styled, { css } from "styled-components";
 
 type VariantStyle = {
   tag: keyof React.JSX.IntrinsicElements;
-  size: keyof Typography["fontSize"];
-  weight: keyof Typography["fontWeight"];
-  lineHeight: keyof Typography["lineHeight"];
+  size: keyof DefaultTheme["fontSize"];
+  weight: keyof DefaultTheme["fontWeight"];
+  lineHeight: keyof DefaultTheme["lineHeight"];
   textTransform?: CSSProperties["textTransform"];
 };
 
@@ -27,7 +27,7 @@ export type TypographyVariants =
 
 type StyledTypographyProps = {
   $variant: TypographyVariants;
-  $color?: keyof Colors;
+  $color?: keyof DefaultTheme["colors"];
   $align?: CSSProperties["textAlign"];
 };
 
@@ -86,5 +86,9 @@ export const StyledTypography = styled.p<StyledTypographyProps>`
   ${({ $variant }) => getTypographyStyles(typographyStyles, $variant)};
   color: ${({ theme, $color }) =>
     $color ? theme.colors[$color] : theme.colors.primary};
-  text-align: ${({ $align }) => $align && $align};
+  ${({ $align }) =>
+    $align &&
+    css`
+      text-align: ${$align};
+    `}
 `;

@@ -1,11 +1,11 @@
 ﻿import type { CSSProperties, ReactNode } from "react";
-import type { Colors } from "styled-components";
+import type { DefaultTheme } from "styled-components";
 
 import * as S from "./Typography.styled";
 
 type TypographyProps = {
   variant?: S.TypographyVariants;
-  color?: keyof Colors;
+  color?: keyof DefaultTheme["colors"];
   align?: CSSProperties["textAlign"];
   children: ReactNode;
 };

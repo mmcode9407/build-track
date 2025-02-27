@@ -1,6 +1,18 @@
-﻿import type { DefaultTheme } from "styled-components";
+﻿export const spacing = {
+  xs: "2px",
+  sm: "4px",
+  md: "8px",
+  lg: "12px",
+  xl: "16px",
+  "2xl": "20px",
+  "3xl": "24px",
+  "4xl": "28px",
+  "5xl": "32px",
+  "6xl": "36px",
+  "7xl": "40px",
+} as const;
 
-export const theme: DefaultTheme = {
+export const theme = {
   fontSize: {
     xs: "0.75rem",
     sm: "0.875rem",
@@ -51,43 +63,13 @@ export const theme: DefaultTheme = {
     none: 0,
   },
   padding: {
-    xs: "2px",
-    sm: "4px",
-    md: "8px",
-    lg: "12px",
-    xl: "16px",
-    "2xl": "20px",
-    "3xl": "24px",
-    "4xl": "28px",
-    "5xl": "32px",
-    "6xl": "36px",
-    "7xl": "40px",
+    ...spacing,
   },
   margin: {
-    xs: "2px",
-    sm: "4px",
-    md: "8px",
-    lg: "12px",
-    xl: "16px",
-    "2xl": "20px",
-    "3xl": "24px",
-    "4xl": "28px",
-    "5xl": "32px",
-    "6xl": "36px",
-    "7xl": "40px",
+    ...spacing,
   },
   gap: {
-    xs: "2px",
-    sm: "4px",
-    md: "8px",
-    lg: "12px",
-    xl: "16px",
-    "2xl": "20px",
-    "3xl": "24px",
-    "4xl": "28px",
-    "5xl": "32px",
-    "6xl": "36px",
-    "7xl": "40px",
+    ...spacing,
   },
   breakpoints: {
     mobile: "640px",
@@ -113,4 +95,4 @@ export const theme: DefaultTheme = {
     popover: 200,
     tooltip: 1000,
   },
-};
+} as const;

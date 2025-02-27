@@ -1,7 +1,8 @@
-﻿import type { Spacing } from "styled-components";
-import { css } from "styled-components";
+﻿import { css } from "styled-components";
 
-type Size = keyof Spacing;
+import type { spacing } from "@/styles/theme";
+
+type Size = keyof typeof spacing;
 
 const flexCenteredRow = css`
   display: flex;

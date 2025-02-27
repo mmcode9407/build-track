@@ -1,8 +1,10 @@
 ﻿import { Link as RLink } from "@tanstack/react-router";
-import type { Colors } from "styled-components";
+import type { DefaultTheme } from "styled-components";
 import styled from "styled-components";
 
-export const Link = styled(RLink)<{ $color?: keyof Colors; $small?: boolean }>`
+type LinkProps = { $color?: keyof DefaultTheme["colors"]; $small?: boolean };
+
+export const Link = styled(RLink)<LinkProps>`
   color: ${({ $color, theme }) =>
     $color ? theme.colors[$color] : theme.colors.mutedForeground};
   font-size: ${({ $small, theme }) => $small && theme.fontSize.xs};
