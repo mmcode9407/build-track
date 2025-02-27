@@ -34,7 +34,7 @@ const SignIn = () => {
   return (
     <>
       <S.InnerContainer>
-        <SCard.Card $width="50%">
+        <SCard.Card $width="50%" $noBorder>
           <SCard.CardHeader $vertical>
             <Typography variant="h4">Welcome Back</Typography>
 
