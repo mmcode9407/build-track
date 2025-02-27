@@ -92,12 +92,7 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
         <FormMessage>{errors.password_confirm?.message}</FormMessage>
       </FormField>
 
-      <SubmitButton
-        size="sm"
-        width="100%"
-        label="Sign up"
-        isPending={isPending}
-      />
+      <SubmitButton fullWidth label="Sign up" isPending={isPending} />
     </Form>
   );
 };
