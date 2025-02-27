@@ -28,8 +28,8 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignInFormSchemaType>({
-    mode: "onSubmit",
-    reValidateMode: "onSubmit",
+    mode: "onBlur",
+    reValidateMode: "onBlur",
     resolver: zodResolver(SignInFormSchema),
     defaultValues: {
       email: "",
@@ -52,10 +52,10 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
           type="text"
           placeholder="Type your email"
           {...register("email")}
-          aria-invalid={errors.email ? true : false}
+          aria-invalid={!!errors.email}
         />
 
-        <FormMessage>{errors.email?.message}</FormMessage>
+        <FormMessage errorMessage={errors.email?.message} />
       </FormField>
 
       <FormField>
@@ -76,10 +76,10 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
           id="password"
           placeholder="Type your password"
           {...register("password")}
-          aria-invalid={errors.password ? true : false}
+          aria-invalid={!!errors.password}
         />
 
-        <FormMessage>{errors.password?.message}</FormMessage>
+        <FormMessage errorMessage={errors.password?.message} />
       </FormField>
 
       <SubmitButton fullWidth label="Sign in" isPending={isPending} />

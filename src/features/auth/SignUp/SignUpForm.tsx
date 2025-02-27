@@ -26,8 +26,8 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpFormSchemaType>({
-    mode: "onSubmit",
-    reValidateMode: "onSubmit",
+    mode: "onBlur",
+    reValidateMode: "onBlur",
     resolver: zodResolver(SignUpFormSchema),
     defaultValues: {
       username: "",
@@ -54,7 +54,7 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
           aria-invalid={!!errors.username}
         />
 
-        <FormMessage>{errors.username?.message}</FormMessage>
+        <FormMessage errorMessage={errors.username?.message} />
       </FormField>
 
       <FormField>
@@ -73,7 +73,7 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
           aria-invalid={!!errors.email}
         />
 
-        <FormMessage>{errors.email?.message}</FormMessage>
+        <FormMessage errorMessage={errors.email?.message} />
       </FormField>
 
       <FormField>
@@ -91,7 +91,7 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
           aria-invalid={!!errors.password}
         />
 
-        <FormMessage>{errors.password?.message}</FormMessage>
+        <FormMessage errorMessage={errors.password?.message} />
       </FormField>
 
       <FormField>
@@ -109,7 +109,7 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
           aria-invalid={!!errors.password_confirm}
         />
 
-        <FormMessage>{errors.password_confirm?.message}</FormMessage>
+        <FormMessage errorMessage={errors.password_confirm?.message} />
       </FormField>
 
       <SubmitButton fullWidth label="Sign up" isPending={isPending} />
