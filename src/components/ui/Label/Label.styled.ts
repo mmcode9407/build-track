@@ -1,8 +1,15 @@
 ﻿import styled from "styled-components";
 
-const Label = styled.label`
+type LabelProps = {
+  $isError: boolean;
+};
+
+export const Label = styled.label<LabelProps>`
   font-size: ${({ theme }) => theme.fontSize.sm};
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme, $isError }) =>
+    $isError ? theme.colors.error : theme.colors.primary};
 `;
 
-export { Label };
+export const LabelStar = styled.span`
+  color: ${({ theme }) => theme.colors.error};
+`;

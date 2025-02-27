@@ -1,7 +1,7 @@
 ﻿import { paddingX, paddingY } from "@styles/helpers";
 import styled from "styled-components";
 
-const Input = styled.input`
+export const Input = styled.input`
   ${paddingX("lg")};
   ${paddingY("md")};
 
@@ -12,5 +12,3 @@ const Input = styled.input`
   width: 100%;
   font-size: ${({ theme }) => theme.fontSize.xs};
 `;
-
-export { Input };

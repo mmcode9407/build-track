@@ -8,8 +8,8 @@ import {
   type SignInFormSchemaType,
 } from "@/api/auth/useSignInMutation";
 import { Input } from "@/components/ui/Input/Input";
-import { PasswordInput } from "@/components/ui/Input/PasswordInput";
 import { Label } from "@/components/ui/Label/Label";
+import { PasswordInput } from "@/components/ui/PasswordInput/PasswordInput";
 
 import { Form } from "../Shared/Form";
 import { FormField } from "../Shared/FormField";
@@ -40,7 +40,12 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormField>
-        <Label htmlFor="email">Email</Label>
+        <Label
+          htmlFor="email"
+          label="Email"
+          isError={!!errors.email}
+          isRequired
+        />
 
         <Input
           id="email"
@@ -55,7 +60,12 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
 
       <FormField>
         <S.LabelContainer>
-          <Label htmlFor="password">Password</Label>
+          <Label
+            htmlFor="password"
+            label="Password"
+            isError={!!errors.password}
+            isRequired
+          />
 
           <SLink.Link $small to="/forgot-password">
             Forgot your password?
