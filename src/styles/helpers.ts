@@ -1,7 +1,8 @@
-﻿import type { Spacing } from "styled-components";
-import { css } from "styled-components";
+﻿import { css } from "styled-components";
 
-type Size = keyof Spacing;
+import type { spacing } from "@/styles/theme";
+
+type Size = keyof typeof spacing;
 
 const flexCenteredRow = css`
   display: flex;
@@ -36,4 +37,11 @@ const marginY = (size: Size) => css`
   margin-bottom: ${({ theme }) => theme.margin[size]};
 `;
 
-export { flexCenteredColumn, flexCenteredRow, marginX, marginY, paddingX, paddingY };
+export {
+  flexCenteredColumn,
+  flexCenteredRow,
+  marginX,
+  marginY,
+  paddingX,
+  paddingY,
+};

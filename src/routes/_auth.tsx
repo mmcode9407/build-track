@@ -1,7 +1,12 @@
 ﻿import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import styled from "styled-components";
 
-import { flexCenteredColumn, flexCenteredRow, paddingX, paddingY } from "@/styles/helpers";
+import {
+  flexCenteredColumn,
+  flexCenteredRow,
+  paddingX,
+  paddingY,
+} from "@/styles/helpers";
 import { isAuthenticated } from "@/utils/isAuthenticated";
 
 export const Route = createFileRoute("/_auth")({

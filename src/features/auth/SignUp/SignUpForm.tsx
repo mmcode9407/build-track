@@ -2,16 +2,18 @@
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 
-import type { SignUpFormSchemaType } from "@/api/auth/auth.types";
-import { SignUpFormSchema } from "@/api/auth/auth.validators";
+import {
+  SignUpFormSchema,
+  type SignUpFormSchemaType,
+} from "@/api/auth/useSignUpMutation";
 import { Input } from "@/components/ui/Input/Input";
-import { PasswordInput } from "@/components/ui/Input/PasswordInput";
 import { Label } from "@/components/ui/Label/Label";
-import { SubmitButton } from "@/features/auth/Shared/SubmitButton";
+import { PasswordInput } from "@/components/ui/PasswordInput/PasswordInput";
 
 import { Form } from "../Shared/Form";
 import { FormField } from "../Shared/FormField";
 import { FormMessage } from "../Shared/FormMessage";
+import { SubmitButton } from "../Shared/SubmitButton";
 
 type SignUpFormProps = {
   onSubmit: SubmitHandler<SignUpFormSchemaType>;
@@ -24,8 +26,8 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpFormSchemaType>({
-    mode: "onSubmit",
-    reValidateMode: "onSubmit",
+    mode: "onBlur",
+    reValidateMode: "onBlur",
     resolver: zodResolver(SignUpFormSchema),
     defaultValues: {
       username: "",
@@ -37,60 +39,80 @@ const SignUpForm = ({ onSubmit, isPending }: SignUpFormProps) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormField>
-        <Label htmlFor="username">Username</Label>
+        <Label
+          htmlFor="username"
+          label="Username"
+          isError={!!errors.username}
+          isRequired
+        />
 
         <Input
           id="username"
           type="text"
           placeholder="Type your username"
           {...register("username")}
-          aria-invalid={errors.username ? true : false}
+          aria-invalid={!!errors.username}
         />
 
-        <FormMessage>{errors.username?.message}</FormMessage>
+        <FormMessage errorMessage={errors.username?.message} />
       </FormField>
 
       <FormField>
-        <Label htmlFor="email">Email</Label>
+        <Label
+          htmlFor="email"
+          label="Email"
+          isError={!!errors.email}
+          isRequired
+        />
 
         <Input
           id="email"
           type="text"
           placeholder="Type your email"
           {...register("email")}
-          aria-invalid={errors.email ? true : false}
+          aria-invalid={!!errors.email}
         />
 
-        <FormMessage>{errors.email?.message}</FormMessage>
+        <FormMessage errorMessage={errors.email?.message} />
       </FormField>
 
       <FormField>
-        <Label htmlFor="password">Password</Label>
+        <Label
+          htmlFor="password"
+          label="Password"
+          isError={!!errors.password}
+          isRequired
+        />
 
         <PasswordInput
           id="password"
           placeholder="Type your password"
           {...register("password")}
-          aria-invalid={errors.password ? true : false}
+          aria-invalid={!!errors.password}
         />
 
-        <FormMessage>{errors.password?.message}</FormMessage>
+        <FormMessage errorMessage={errors.password?.message} />
       </FormField>
 
       <FormField>
-        <Label htmlFor="password_confirm">Repeat Password</Label>
+        <Label
+          htmlFor="password_confirm"
+          label="Confirm password"
+          isError={!!errors.password_confirm}
+          isRequired
+        />
 
         <PasswordInput
           id="password_confirm"
           placeholder="Confirm your password"
           {...register("password_confirm")}
-          aria-invalid={errors.password_confirm ? true : false}
+          aria-invalid={!!errors.password_confirm}
         />
 
-        <FormMessage>{errors.password_confirm?.message}</FormMessage>
+        <FormMessage errorMessage={errors.password_confirm?.message} />
       </FormField>
 
-      <SubmitButton size="sm" width="100%" label="Sign up" isPending={isPending} />
+      <SubmitButton fullWidth label="Sign up" isPending={isPending} />
     </Form>
   );
 };

@@ -1,16 +1,27 @@
 ﻿import type { Button as AriaButton } from "@ariakit/react";
-import type { CSSProperties } from "react";
 
-import { type ButtonSizes, type ButtonVariants, StyledButton } from "./Button.styled";
+import * as S from "./Button.styled";
 
 type ButtonProps = React.ComponentProps<typeof AriaButton> & {
-  variant?: ButtonVariants;
-  size?: ButtonSizes;
-  width?: CSSProperties["width"];
+  variant?: S.ButtonVariants;
+  size?: S.ButtonSizes;
+  fullWidth?: boolean;
 };
 
-const Button = ({ variant = "primary", size = "md", width, ...props }: ButtonProps) => {
-  return <StyledButton $variant={variant} $size={size} $width={width} {...props} />;
+const Button = ({
+  variant = "primary",
+  size = "md",
+  fullWidth = false,
+  ...props
+}: ButtonProps) => {
+  return (
+    <S.Button
+      $variant={variant}
+      $size={size}
+      $fullWidth={fullWidth}
+      {...props}
+    />
+  );
 };
 
 export { Button };

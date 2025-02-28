@@ -1,123 +1,97 @@
 ﻿import { Button as AriaButton } from "@ariakit/react";
-import type { CSSProperties } from "react";
-import type { DefaultTheme } from "styled-components";
+import type { RuleSet } from "styled-components";
 import styled, { css } from "styled-components";
 
 import { flexCenteredRow, paddingX, paddingY } from "../../../styles/helpers";
 
-export type ButtonVariants = "primary" | "secondary" | "outline" | "link" | "withIcon";
+export type ButtonVariants =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "link"
+  | "icon";
 export type ButtonSizes = "sm" | "md" | "lg" | "icon";
 
-const getButtonStyles = (variant: ButtonVariants, theme: DefaultTheme) => {
-  switch (variant) {
-    case "primary":
-      return css`
-        background: ${theme.colors.primary};
-        color: ${theme.colors.primaryForeground};
+const buttonStyles: Record<ButtonVariants, RuleSet<object>> = {
+  primary: css`
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primaryForeground};
 
-        &:hover {
-          opacity: ${theme.opacity.hover};
-        }
-      `;
-    case "secondary":
-      return css`
-        background: ${theme.colors.secondary};
-        color: ${theme.colors.secondaryForeground};
+    &:hover {
+      opacity: ${({ theme }) => theme.opacity.hover};
+    }
+  `,
+  secondary: css`
+    background-color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.secondaryForeground};
 
-        &:hover {
-          opacity: ${theme.opacity.hover};
-        }
-      `;
-    case "outline":
-      return css`
-        background: ${theme.colors.background};
-        color: ${theme.colors.primary};
-        border: 1px solid ${theme.colors.input};
+    &:hover {
+      opacity: ${({ theme }) => theme.opacity.hover};
+    }
+  `,
+  outline: css`
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.primary};
+    border: 1px solid ${({ theme }) => theme.colors.input};
 
-        &:hover {
-          background-color: ${theme.colors.accent};
-          color: ${theme.colors.accentForeground};
-        }
-      `;
-    case "link":
-      return css`
-        background: ${theme.colors.background};
-        color: ${theme.colors.primary};
-        text-decoration: underline;
-        text-decoration-color: transparent;
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.accent};
+      color: ${({ theme }) => theme.colors.accentForeground};
+    }
+  `,
+  link: css`
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.primary};
+    text-decoration: underline;
+    text-decoration-color: transparent;
 
-        &:hover {
-          text-decoration-color: ${theme.colors.primary};
-        }
-      `;
-    case "withIcon":
-      return css`
-        background: ${theme.colors.primary};
-        color: ${theme.colors.primaryForeground};
+    &:hover {
+      text-decoration-color: ${({ theme }) => theme.colors.primary};
+    }
+  `,
+  icon: css`
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.mutedForeground};
 
-        &:hover {
-          opacity: ${theme.opacity.hover};
-        }
-      `;
-    default:
-      return css`
-        background: ${theme.colors.primary};
-        color: ${theme.colors.primaryForeground};
-
-        &:hover {
-          opacity: ${theme.opacity.hover};
-        }
-      `;
-  }
+    &:hover {
+      opacity: ${({ theme }) => theme.opacity.secondaryHover};
+    }
+  `,
 };
 
-const getButtonSize = (size: ButtonSizes) => {
-  switch (size) {
-    case "sm":
-      return css`
-        height: 40px;
-        ${paddingX("md")};
-        ${paddingY("sm")};
-      `;
-    case "md":
-      return css`
-        height: 48px;
-        ${paddingX("xl")};
-        ${paddingY("md")};
-      `;
-    case "lg":
-      return css`
-        height: 56px;
-        ${paddingX("xl")};
-        ${paddingY("lg")};
-      `;
-    case "icon":
-      return css`
-        height: 40px;
-        width: 40px;
-      `;
-    default:
-      return css`
-        height: 48px;
-        ${paddingX("xl")};
-        ${paddingY("md")};
-      `;
-  }
+const buttonSize: Record<ButtonSizes, RuleSet<object>> = {
+  sm: css`
+    ${paddingX("md")};
+    ${paddingY("sm")};
+  `,
+  md: css`
+    ${paddingX("xl")};
+    ${paddingY("md")};
+  `,
+  lg: css`
+    ${paddingX("xl")};
+    ${paddingY("lg")};
+  `,
+  icon: css`
+    width: 100%;
+    height: 100%;
+    max-height: 40px;
+    max-width: 40px;
+  `,
 };
 
-type StyledButtonProps = {
+type ButtonProps = {
   $variant: ButtonVariants;
   $size: ButtonSizes;
-  $width?: CSSProperties["width"];
+  $fullWidth: boolean;
 };
 
-export const StyledButton = styled(AriaButton)<StyledButtonProps>`
+export const Button = styled(AriaButton)<ButtonProps>`
   ${flexCenteredRow};
 
-  ${({ theme, $variant }) => getButtonStyles($variant, theme)};
-  ${({ $size }) => getButtonSize($size)};
+  ${({ $variant }) => buttonStyles[$variant]};
+  ${({ $size }) => buttonSize[$size]};
 
-  width: ${({ $width }) => $width};
   gap: ${({ theme }) => theme.gap.md};
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
@@ -128,6 +102,12 @@ export const StyledButton = styled(AriaButton)<StyledButtonProps>`
     text-decoration 0.3s ease-in-out,
     background-color 0.3s ease-in-out,
     color 0.3s ease-in-out;
+
+  ${({ $fullWidth }) =>
+    $fullWidth &&
+    css`
+      width: 100%;
+    `}
 
   &:disabled {
     opacity: ${({ theme }) => theme.opacity.secondaryHover};

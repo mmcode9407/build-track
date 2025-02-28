@@ -1,25 +1,40 @@
 ﻿import * as SCard from "@components/ui/Card/Card.styled";
 import * as SLink from "@components/ui/Link/Link.styled";
+import { useNavigate } from "@tanstack/react-router";
 import type { SubmitHandler } from "react-hook-form";
+import { toast } from "react-toastify";
 
-import type { SignInFormSchemaType } from "@/api/auth/auth.types";
+import {
+  type SignInFormSchemaType,
+  useSignInMutation,
+} from "@/api/auth/useSignInMutation";
 import AuthPlaceholder from "@/assets/images/auth-placeholder.png";
 import { Typography } from "@/components/ui/Typography/Typography";
-import { useSignIn } from "@/features/auth/SignIn/hooks";
-import { SignInForm } from "@/features/auth/SignIn/SignInForm";
 
 import * as S from "./SignIn.styled";
+import { SignInForm } from "./SignInForm";
 
 const SignIn = () => {
-  const { signIn, isPending } = useSignIn();
+  const { mutate: signIn, isPending } = useSignInMutation();
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<SignInFormSchemaType> = (values) => {
-    signIn(values);
+    signIn(values, {
+      onSuccess: () => {
+        toast.success("Signed in successfully");
+        navigate({ to: "/" });
+      },
+      onError: (error) => {
+        toast.error(error.message);
+        console.error("Error during signing in: ", error);
+      },
+    });
   };
+
   return (
     <>
       <S.InnerContainer>
-        <SCard.Card $width="50%">
+        <SCard.Card $width="50%" $noBorder>
           <SCard.CardHeader $vertical>
             <Typography variant="h4">Welcome Back</Typography>
 
@@ -34,7 +49,8 @@ const SignIn = () => {
 
           <SCard.CardFooter>
             <Typography variant="caption" color="mutedForeground">
-              Don't have an account? <SLink.Link to="/sign-up">Sign Up</SLink.Link>
+              Don't have an account?{" "}
+              <SLink.Link to="/sign-up">Sign Up</SLink.Link>
             </Typography>
           </SCard.CardFooter>
         </SCard.Card>

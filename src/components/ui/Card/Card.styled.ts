@@ -2,7 +2,12 @@
 import type { RuleSet } from "styled-components";
 import styled, { css } from "styled-components";
 
-import { flexCenteredColumn, flexCenteredRow, paddingX, paddingY } from "@/styles/helpers";
+import {
+  flexCenteredColumn,
+  flexCenteredRow,
+  paddingX,
+  paddingY,
+} from "@/styles/helpers";
 
 type CardVariants = "primary";
 
@@ -29,13 +34,13 @@ type CardFooterProps = {
 const cardStyles: Record<CardVariants, RuleSet<object>> = {
   primary: css`
     border-radius: ${({ theme }) => theme.borders["rounded-lg"]};
-    border-color: ${({ theme }) => theme.colors.border};
+    border: 1px solid ${({ theme }) => theme.colors.border};
     background-color: ${({ theme }) => theme.colors.card};
     color: ${({ theme }) => theme.colors.cardForeground};
   `,
 };
 
-const Card = styled.div<CardProps>`
+export const Card = styled.div<CardProps>`
   ${flexCenteredColumn};
   ${paddingX("3xl")};
   ${paddingY("3xl")};
@@ -46,19 +51,18 @@ const Card = styled.div<CardProps>`
   border: ${({ $noBorder }) => $noBorder && "none"};
 `;
 
-const CardHeader = styled.div<CardHeaderProps>`
+export const CardHeader = styled.div<CardHeaderProps>`
   ${({ $vertical }) => ($vertical ? flexCenteredColumn : flexCenteredRow)}
 `;
 
-const CardContent = styled.div<CardContentProps>`
+export const CardContent = styled.div<CardContentProps>`
   width: ${({ $width }) => $width || "100%"};
 `;
 
-const CardFooter = styled.div<CardFooterProps>`
+export const CardFooter = styled.div<CardFooterProps>`
   display: flex;
   flex-direction: ${({ $vertical }) => $vertical && "column"};
-  justify-content: ${({ $spaceBetween }) => ($spaceBetween ? "space-between" : "center")};
+  justify-content: ${({ $spaceBetween }) =>
+    $spaceBetween ? "space-between" : "center"};
   width: ${({ $width }) => $width || "100%"};
 `;
-
-export { Card, CardContent, CardFooter, CardHeader };

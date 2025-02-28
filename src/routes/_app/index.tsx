@@ -1,8 +1,8 @@
 ﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
+import { useUserQuery } from "@/api/auth/useUserQuery";
 import { Button } from "@/components/ui/Button/Button";
-import { useUser } from "@/features/auth/Shared/hooks/useUser";
-import { supabase } from "@/libs/supabase";
+import { supabaseClient } from "@/libs/supabaseClient";
 
 export const Route = createFileRoute("/_app/")({
   beforeLoad: () => {
@@ -12,12 +12,11 @@ export const Route = createFileRoute("/_app/")({
 });
 
 const Dashboard = () => {
-  const { user, resetUser } = useUser();
+  const { data: user } = useUserQuery();
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    resetUser();
+    await supabaseClient.auth.signOut();
     navigate({ to: "/sign-in" });
   };
 

@@ -1,31 +1,46 @@
 ﻿import * as SCard from "@components/ui/Card/Card.styled";
 import * as SLink from "@components/ui/Link/Link.styled";
+import { useNavigate } from "@tanstack/react-router";
 import type { SubmitHandler } from "react-hook-form";
+import { toast } from "react-toastify";
 
-import type { SignUpFormSchemaType } from "@/api/auth/auth.types";
+import {
+  type SignUpFormSchemaType,
+  useSignUpMutation,
+} from "@/api/auth/useSignUpMutation";
 import AuthPlaceholder from "@/assets/images/auth-placeholder.png";
 import { Typography } from "@/components/ui/Typography/Typography";
-import { useSignUp } from "@/features/auth/SignUp/hooks";
 
 import * as S from "./SignUp.styled";
 import { SignUpForm } from "./SignUpForm";
 
 const SignUp = () => {
-  const { signUp, isPending } = useSignUp();
+  const { mutate: signUp, isPending } = useSignUpMutation();
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<SignUpFormSchemaType> = (values) => {
-    signUp(values);
+    signUp(values, {
+      onSuccess: () => {
+        toast.success("Signed up successfully");
+        navigate({ to: "/sign-in" });
+      },
+      onError: (error) => {
+        toast.error(error.message);
+        console.error("Error during signing in: ", error);
+      },
+    });
   };
 
   return (
     <>
       <S.InnerContainer>
-        <SCard.Card $width="50%">
+        <SCard.Card $width="50%" $noBorder>
           <SCard.CardHeader $vertical>
             <Typography variant="h4">Create account</Typography>
 
             <Typography variant="body-1" color="mutedForeground" align="center">
-              Create your account and let's start save money with your BuildTrack
+              Create your account and let's start save money with your
+              BuildTrack
             </Typography>
           </SCard.CardHeader>
 
@@ -35,7 +50,8 @@ const SignUp = () => {
 
           <SCard.CardFooter>
             <Typography variant="caption" color="mutedForeground">
-              Already have an account? <SLink.Link to="/sign-in">Sign In</SLink.Link>
+              Already have an account?{" "}
+              <SLink.Link to="/sign-in">Sign In</SLink.Link>
             </Typography>
           </SCard.CardFooter>
         </SCard.Card>

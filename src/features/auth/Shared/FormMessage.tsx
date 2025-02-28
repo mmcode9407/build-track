@@ -1,13 +1,13 @@
 ﻿import { Typography } from "@/components/ui/Typography/Typography";
 
 type FormMessageProps = {
-  children: React.ReactNode;
+  errorMessage?: string;
 };
 
-const FormMessage = ({ children }: FormMessageProps) => {
+const FormMessage = ({ errorMessage }: FormMessageProps) => {
   return (
-    <Typography variant="caption" color="error">
-      {children}
+    <Typography variant="caption" color="error" aria-live="polite">
+      {errorMessage}
     </Typography>
   );
 };

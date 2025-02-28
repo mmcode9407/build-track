@@ -3,16 +3,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 
-import type { SignInFormSchemaType } from "@/api/auth/auth.types";
-import { SignInFormSchema } from "@/api/auth/auth.validators";
+import {
+  SignInFormSchema,
+  type SignInFormSchemaType,
+} from "@/api/auth/useSignInMutation";
 import { Input } from "@/components/ui/Input/Input";
-import { PasswordInput } from "@/components/ui/Input/PasswordInput";
 import { Label } from "@/components/ui/Label/Label";
-import { FormMessage } from "@/features/auth/Shared/FormMessage";
-import { SubmitButton } from "@/features/auth/Shared/SubmitButton";
+import { PasswordInput } from "@/components/ui/PasswordInput/PasswordInput";
 
 import { Form } from "../Shared/Form";
 import { FormField } from "../Shared/FormField";
+import { FormMessage } from "../Shared/FormMessage";
+import { SubmitButton } from "../Shared/SubmitButton";
 import * as S from "./SignInForm.styled";
 
 type SignInFormProps = {
@@ -26,8 +28,8 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignInFormSchemaType>({
-    mode: "onSubmit",
-    reValidateMode: "onSubmit",
+    mode: "onBlur",
+    reValidateMode: "onBlur",
     resolver: zodResolver(SignInFormSchema),
     defaultValues: {
       email: "",
@@ -38,22 +40,32 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormField>
-        <Label htmlFor="email">Email</Label>
+        <Label
+          htmlFor="email"
+          label="Email"
+          isError={!!errors.email}
+          isRequired
+        />
 
         <Input
           id="email"
           type="text"
           placeholder="Type your email"
           {...register("email")}
-          aria-invalid={errors.email ? true : false}
+          aria-invalid={!!errors.email}
         />
 
-        <FormMessage>{errors.email?.message}</FormMessage>
+        <FormMessage errorMessage={errors.email?.message} />
       </FormField>
 
       <FormField>
         <S.LabelContainer>
-          <Label htmlFor="password">Password</Label>
+          <Label
+            htmlFor="password"
+            label="Password"
+            isError={!!errors.password}
+            isRequired
+          />
 
           <SLink.Link $small to="/forgot-password">
             Forgot your password?
@@ -64,13 +76,13 @@ const SignInForm = ({ onSubmit, isPending }: SignInFormProps) => {
           id="password"
           placeholder="Type your password"
           {...register("password")}
-          aria-invalid={errors.password ? true : false}
+          aria-invalid={!!errors.password}
         />
 
-        <FormMessage>{errors.password?.message}</FormMessage>
+        <FormMessage errorMessage={errors.password?.message} />
       </FormField>
 
-      <SubmitButton size="sm" width="100%" label="Sign in" isPending={isPending} />
+      <SubmitButton fullWidth label="Sign in" isPending={isPending} />
     </Form>
   );
 };
