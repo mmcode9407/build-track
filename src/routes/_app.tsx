@@ -1,5 +1,6 @@
-﻿import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+﻿import { createFileRoute, redirect } from "@tanstack/react-router";
 
+import { AppLayout } from "@/features/app/layouts/AppLayout/AppLayout";
 import { isAuthenticated } from "@/utils/isAuthenticated";
 
 export const Route = createFileRoute("/_app")({
@@ -14,11 +15,3 @@ export const Route = createFileRoute("/_app")({
   },
   component: () => <AppLayout />,
 });
-
-const AppLayout = () => {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
-};
