@@ -11,4 +11,5 @@ export const Input = styled.input`
   height: 36px;
   width: 100%;
   font-size: ${({ theme }) => theme.fontSize.xs};
+  color: ${({ theme }) => theme.colors.primary};
 `;

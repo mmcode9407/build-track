@@ -35,7 +35,6 @@ const cardStyles: Record<CardVariants, RuleSet<object>> = {
   primary: css`
     border-radius: ${({ theme }) => theme.borders["rounded-lg"]};
     border: 1px solid ${({ theme }) => theme.colors.border};
-    background-color: ${({ theme }) => theme.colors.card};
     color: ${({ theme }) => theme.colors.cardForeground};
   `,
 };
