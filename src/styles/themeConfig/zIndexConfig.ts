@@ -1,4 +1,4 @@
-﻿export const zIndex = {
+﻿export const zIndexConfig = {
   negative: -1,
   neutral: 0,
   positive: 1,

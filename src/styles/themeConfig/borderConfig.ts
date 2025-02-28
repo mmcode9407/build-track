@@ -1,4 +1,4 @@
-﻿export const borders = {
+﻿export const borderConfig = {
   "rounded-sm": "2px",
   rounded: "4px",
   "rounded-md": "6px",

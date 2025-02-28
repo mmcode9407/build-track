@@ -1,4 +1,4 @@
-﻿export const spacing = {
+﻿export const spacingConfig = {
   xs: "2px",
   sm: "4px",
   md: "8px",

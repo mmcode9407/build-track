@@ -1,16 +1,14 @@
 ﻿import {
-  borders,
-  breakpoints,
-  colors,
-  fontSize,
-  spacing,
-  zIndex,
+  borderConfig,
+  breakpointConfig,
+  colorConfig,
+  fontSizeConfig,
+  spacingConfig,
+  zIndexConfig,
 } from "@/styles/themeConfig";
 
 export const theme = {
-  fontSize: {
-    ...fontSize,
-  },
+  fontSize: fontSizeConfig,
   fontWeight: {
     normal: "400",
     semibold: "600",
@@ -22,30 +20,16 @@ export const theme = {
     normal: "1.5",
     relaxed: "1.75",
   },
-  colors: {
-    ...colors,
-  },
+  colors: colorConfig,
   opacity: {
     hover: 0.9,
     secondaryHover: 0.8,
     none: 0,
   },
-  padding: {
-    ...spacing,
-  },
-  margin: {
-    ...spacing,
-  },
-  gap: {
-    ...spacing,
-  },
-  breakpoints: {
-    ...breakpoints,
-  },
-  borders: {
-    ...borders,
-  },
-  zIndex: {
-    ...zIndex,
-  },
+  padding: spacingConfig,
+  margin: spacingConfig,
+  gap: spacingConfig,
+  breakpoints: breakpointConfig,
+  borders: borderConfig,
+  zIndex: zIndexConfig,
 } as const;
