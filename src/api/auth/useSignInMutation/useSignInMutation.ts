@@ -5,9 +5,7 @@ import { supabaseClient } from "@/libs/supabaseClient";
 import type { SignInMutationArgs } from "./types";
 
 const signInMutation = async (credentials: SignInMutationArgs) => {
-  const { error } = await supabaseClient.auth.signInWithPassword({
-    ...credentials,
-  });
+  const { error } = await supabaseClient.auth.signInWithPassword(credentials);
 
   if (error) {
     throw error;

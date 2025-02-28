@@ -1,12 +1,12 @@
 ﻿import { Typography } from "@/components/ui/Typography/Typography";
 
 type FormMessageProps = {
-  errorMessage: string | undefined;
+  errorMessage?: string;
 };
 
 const FormMessage = ({ errorMessage }: FormMessageProps) => {
   return (
-    <Typography variant="caption" color="error">
+    <Typography variant="caption" color="error" aria-live="polite">
       {errorMessage}
     </Typography>
   );

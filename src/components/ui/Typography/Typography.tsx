@@ -1,9 +1,9 @@
-﻿import type { CSSProperties, ReactNode } from "react";
+﻿import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
 import type { DefaultTheme } from "styled-components";
 
 import * as S from "./Typography.styled";
 
-type TypographyProps = {
+type TypographyProps = HTMLAttributes<HTMLElement> & {
   variant?: S.TypographyVariants;
   color?: keyof DefaultTheme["colors"];
   align?: CSSProperties["textAlign"];
@@ -15,6 +15,7 @@ const Typography = ({
   color = "primary",
   align,
   children,
+  ...props
 }: TypographyProps) => {
   const Tag = S.typographyStyles[variant].tag;
 
@@ -23,7 +24,8 @@ const Typography = ({
       as={Tag}
       $variant={variant}
       $color={color}
-      $align={align}>
+      $align={align}
+      {...props}>
       {children}
     </S.StyledTypography>
   );

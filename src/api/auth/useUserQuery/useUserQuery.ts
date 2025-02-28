@@ -22,4 +22,4 @@ const getUser = async (): Promise<GetMeUserResponse> => {
 };
 
 export const useUserQuery = () =>
-  useQuery({ queryKey: [tags.user], queryFn: getUser });
+  useQuery({ queryKey: [tags.GET_USER], queryFn: getUser });
