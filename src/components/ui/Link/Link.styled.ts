@@ -31,7 +31,6 @@ export const Link = styled(RLink)<LinkProps>`
       display: inline-flex;
       align-items: center;
       gap: ${({ theme }) => theme.gap.sm};
-      margin: 0 auto;
 
       & > svg {
         width: 16px;

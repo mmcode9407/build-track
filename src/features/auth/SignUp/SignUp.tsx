@@ -34,9 +34,11 @@ const SignUp = () => {
   return (
     <>
       <S.InnerContainer>
-        <SCard.Card $width="50%" $noBorder>
-          <SCard.CardHeader $vertical>
-            <Typography variant="h4">Create account</Typography>
+        <SCard.Card $noBorder>
+          <SCard.CardHeader>
+            <Typography variant="h4" align="center">
+              Create account
+            </Typography>
 
             <Typography variant="body-1" color="mutedForeground" align="center">
               Create your account and let's start save money with your
@@ -48,7 +50,7 @@ const SignUp = () => {
             <SignUpForm onSubmit={onSubmit} isPending={isPending} />
           </SCard.CardContent>
 
-          <SCard.CardFooter>
+          <SCard.CardFooter $center>
             <Typography variant="caption" color="mutedForeground">
               Already have an account?{" "}
               <SLink.Link to="/sign-in">Sign In</SLink.Link>

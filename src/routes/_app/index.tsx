@@ -1,36 +1,10 @@
-﻿import { createFileRoute, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 
-import { useUserQuery } from "@/api/auth/useUserQuery";
-import { Button } from "@/components/ui/Button/Button";
-import { supabaseClient } from "@/libs/supabaseClient";
+import { Project } from "@/features/app/Project/Project";
 
 export const Route = createFileRoute("/_app/")({
   beforeLoad: () => {
-    document.title = "Dashboard - BuildTrack";
+    document.title = "My projects - BuildTrack";
   },
-  component: () => <Dashboard />,
+  component: () => <Project />,
 });
-
-const Dashboard = () => {
-  const { data: user } = useUserQuery();
-  const navigate = useNavigate();
-
-  const handleSignOut = async () => {
-    await supabaseClient.auth.signOut();
-    navigate({ to: "/sign-in" });
-  };
-
-  return (
-    <div>
-      <div>
-        <h1>Dashboard</h1>
-      </div>
-
-      <div>
-        <pre>{JSON.stringify(user)}</pre>
-      </div>
-
-      <Button onClick={handleSignOut}>Sign out</Button>
-    </div>
-  );
-};

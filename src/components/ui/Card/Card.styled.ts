@@ -1,34 +1,16 @@
-﻿import type { CSSProperties } from "react";
-import type { RuleSet } from "styled-components";
+﻿import type { RuleSet } from "styled-components";
 import styled, { css } from "styled-components";
-
-import {
-  flexCenteredColumn,
-  flexCenteredRow,
-  paddingX,
-  paddingY,
-} from "@/styles/helpers";
 
 type CardVariants = "primary";
 
 type CardProps = {
   $variant?: CardVariants;
   $noBorder?: boolean;
-  $width?: CSSProperties["width"];
-};
-
-type CardHeaderProps = {
-  $vertical?: boolean;
-};
-
-type CardContentProps = {
-  $width?: CSSProperties["width"];
+  $maxWidth?: string;
 };
 
 type CardFooterProps = {
-  $vertical?: boolean;
-  $width?: CSSProperties["width"];
-  $spaceBetween?: boolean;
+  $center?: boolean;
 };
 
 const cardStyles: Record<CardVariants, RuleSet<object>> = {
@@ -40,28 +22,42 @@ const cardStyles: Record<CardVariants, RuleSet<object>> = {
 };
 
 export const Card = styled.div<CardProps>`
-  ${flexCenteredColumn};
-  ${paddingX("3xl")};
-  ${paddingY("3xl")};
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.gap.lg};
   ${({ $variant = "primary" }) => cardStyles[$variant]}
-
-  width: ${({ $width }) => $width || "100%"};
-  gap: ${({ theme }) => theme.gap["3xl"]};
   border: ${({ $noBorder }) => $noBorder && "none"};
+  overflow: hidden;
+
+  ${({ $maxWidth }) =>
+    $maxWidth &&
+    css`
+      max-width: ${$maxWidth};
+      width: 100%;
+    `}
 `;
 
-export const CardHeader = styled.div<CardHeaderProps>`
-  ${({ $vertical }) => ($vertical ? flexCenteredColumn : flexCenteredRow)}
+export const CardHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.gap.sm};
+  padding: ${({ theme }) => theme.padding["lg"]};
+  padding-bottom: 0;
 `;
 
-export const CardContent = styled.div<CardContentProps>`
-  width: ${({ $width }) => $width || "100%"};
+export const CardContent = styled.div`
+  padding: 0 ${({ theme }) => theme.padding["lg"]};
 `;
 
 export const CardFooter = styled.div<CardFooterProps>`
   display: flex;
-  flex-direction: ${({ $vertical }) => $vertical && "column"};
-  justify-content: ${({ $spaceBetween }) =>
-    $spaceBetween ? "space-between" : "center"};
-  width: ${({ $width }) => $width || "100%"};
+  align-items: center;
+  ${({ $center = false }) =>
+    $center &&
+    css`
+      justify-content: center;
+    `}
+  width: 100%;
+  padding: ${({ theme }) => theme.padding["lg"]};
+  padding-top: 0;
 `;
