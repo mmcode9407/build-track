@@ -2,6 +2,7 @@
 
 import { useUserQuery } from "@/api/auth/useUserQuery";
 import { useProjectQuery } from "@/api/project/useProjectQuery";
+import { Placeholder } from "@/components/Placeholder/Placeholder";
 import { Button } from "@/components/ui/Button/Button";
 import { Typography } from "@/components/ui/Typography/Typography";
 
@@ -24,12 +25,15 @@ const Project = () => {
         <Button>Create new project</Button>
       </S.SectionHeader>
 
-      <S.ProjectsList>
-        {projects &&
-          projects.map((project) => (
+      {projects && projects.length ? (
+        <S.ProjectsList>
+          {projects.map((project) => (
             <ProjectItem key={project.id} project={project} />
           ))}
-      </S.ProjectsList>
+        </S.ProjectsList>
+      ) : (
+        <Placeholder label="No projects yet" />
+      )}
     </S.Section>
   );
 };
