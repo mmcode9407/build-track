@@ -1,6 +1,6 @@
 ﻿import { useMutation } from "@tanstack/react-query";
 
-import { supabaseClient } from "@/libs/supabaseClient";
+import { supabaseClient } from "@/libs/supabase/supabaseClient";
 
 const signOutMutation = async () => {
   const { error } = await supabaseClient.auth.signOut();

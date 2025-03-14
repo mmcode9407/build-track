@@ -1,1 +1,3 @@
-﻿export type GetMeUserResponse = { username: string; email: string; id: string };
+﻿import type { Tables } from "@/libs/supabase/database.types";
+
+export type GetUserResponse = Tables<"users">;

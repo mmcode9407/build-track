@@ -1,4 +1,4 @@
-﻿import { supabaseClient } from "@/libs/supabaseClient";
+﻿import { supabaseClient } from "@/libs/supabase/supabaseClient";
 
 export const isAuthenticated = async () => {
   const {
