@@ -46,7 +46,7 @@ export type Database = {
           id: string
           name: string
           price: number
-          project_id: string | null
+          project_id: string
           receipt_image: string | null
           seller: string
           status: Database["public"]["Enums"]["expense_payment_status"]
@@ -59,7 +59,7 @@ export type Database = {
           id?: string
           name?: string
           price?: number
-          project_id?: string | null
+          project_id?: string
           receipt_image?: string | null
           seller?: string
           status?: Database["public"]["Enums"]["expense_payment_status"]
@@ -72,7 +72,7 @@ export type Database = {
           id?: string
           name?: string
           price?: number
-          project_id?: string | null
+          project_id?: string
           receipt_image?: string | null
           seller?: string
           status?: Database["public"]["Enums"]["expense_payment_status"]

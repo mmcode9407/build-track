@@ -1,5 +1,7 @@
 ﻿import { LucideCalendar } from "lucide-react";
 
+import { useUserQuery } from "@/api/auth/useUserQuery";
+import { useProjectQuery } from "@/api/project/useProjectQuery";
 import { Button } from "@/components/ui/Button/Button";
 import { Typography } from "@/components/ui/Typography/Typography";
 
@@ -7,6 +9,9 @@ import * as S from "./Project.styled";
 import { ProjectItem } from "./ProjectItem";
 
 const Project = () => {
+  const { data: user } = useUserQuery();
+  const { data: projects } = useProjectQuery(user?.id);
+
   return (
     <S.Section>
       <S.SectionHeader>
@@ -20,9 +25,10 @@ const Project = () => {
       </S.SectionHeader>
 
       <S.ProjectsList>
-        {Array.from({ length: 9 }).map((_, idx) => (
-          <ProjectItem key={idx} />
-        ))}
+        {projects &&
+          projects.map((project) => (
+            <ProjectItem key={project.id} project={project} />
+          ))}
       </S.ProjectsList>
     </S.Section>
   );
