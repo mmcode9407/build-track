@@ -24,7 +24,7 @@ const Footer = () => {
       </S.Title>
 
       <Typography variant="body-2" align="center">
-        {currentYear} © All rights reserved
+        {currentYear} &copy; All rights reserved
       </Typography>
     </S.Footer>
   );
