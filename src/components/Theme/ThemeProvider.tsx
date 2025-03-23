@@ -4,7 +4,10 @@ import { ThemeProvider as BaseThemeProvider } from "styled-components";
 import { baseTheme } from "@/styles/theme";
 import { darkColorsConfig, lightColorsConfig } from "@/styles/themeConfig";
 
-type ThemeMode = "light" | "dark";
+enum ThemeMode {
+  LIGHT = "light",
+  DARK = "dark",
+}
 
 type ThemeContextProps = {
   themeMode: ThemeMode;
@@ -22,24 +25,25 @@ const getPreferredTheme = (): ThemeMode => {
     const storedTheme = localStorage.getItem("theme");
 
     if (storedTheme) {
-      return storedTheme === "dark" ? "dark" : "light";
+      return storedTheme === ThemeMode.DARK ? ThemeMode.DARK : ThemeMode.LIGHT;
     }
 
     const systemPreference = window.matchMedia(
       "(prefers-color-scheme: dark)",
     ).matches;
 
-    return systemPreference ? "dark" : "light";
+    return systemPreference ? ThemeMode.DARK : ThemeMode.LIGHT;
   }
 
-  return "light";
+  return ThemeMode.LIGHT;
 };
 
 export const ThemeProvider = ({ children }: themeProviderProps) => {
   const [themeMode, setThemeMode] = useState<ThemeMode>(getPreferredTheme);
 
   const toggleTheme = () => {
-    const newTheme = themeMode === "dark" ? "light" : "dark";
+    const newTheme =
+      themeMode === ThemeMode.DARK ? ThemeMode.LIGHT : ThemeMode.DARK;
 
     setThemeMode(newTheme);
     localStorage.setItem("theme", newTheme);
@@ -49,7 +53,7 @@ export const ThemeProvider = ({ children }: themeProviderProps) => {
     const themeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const handleChange = (e: MediaQueryListEvent) => {
-      const newTheme = e.matches ? "dark" : "light";
+      const newTheme = e.matches ? ThemeMode.DARK : ThemeMode.LIGHT;
 
       setThemeMode(newTheme);
       localStorage.setItem("theme", newTheme);
@@ -64,7 +68,8 @@ export const ThemeProvider = ({ children }: themeProviderProps) => {
 
   const theme = {
     ...baseTheme,
-    colors: themeMode === "light" ? lightColorsConfig : darkColorsConfig,
+    colors:
+      themeMode === ThemeMode.LIGHT ? lightColorsConfig : darkColorsConfig,
   };
 
   return (

@@ -1,5 +1,5 @@
 ﻿import { LucideMoon, LucideSun } from "lucide-react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { Button as OwnButton } from "@/components/ui/Button/Button";
 
@@ -9,22 +9,24 @@ export const Button = styled(OwnButton)`
   height: 40px;
 `;
 
-export const SunIcon = styled(LucideSun)`
+const IconStyles = css`
   position: absolute;
   transition: transform 0.3s ease-out;
   transform: rotate(0) scale(1);
+`;
 
-  button[data-state="dark"] & {
+export const SunIcon = styled(LucideSun)`
+  ${IconStyles}
+
+  button[data-theme="dark"] & {
     transform: rotate(-90deg) scale(0);
   }
 `;
 
 export const MoonIcon = styled(LucideMoon)`
-  position: absolute;
-  transition: transform 0.3s ease-out;
-  transform: rotate(0) scale(1);
+  ${IconStyles}
 
-  button[data-state="light"] & {
+  button[data-theme="light"] & {
     transform: rotate(90deg) scale(0);
   }
 `;
