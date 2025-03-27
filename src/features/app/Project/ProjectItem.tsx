@@ -11,11 +11,9 @@ import { Typography } from "@/components/ui/Typography/Typography";
 
 import * as S from "./ProjectItem.styled";
 
-type ProjectItemProps = {
-  project: ProjectsWithExpensesPrice[number];
-};
+type ProjectItemProps = ProjectsWithExpensesPrice[number];
 
-const ProjectItem = ({ project }: ProjectItemProps) => {
+const ProjectItem = ({ ...project }: ProjectItemProps) => {
   const totalExpensesPrice = useMemo(
     () => project.expenses.reduce((sum, expense) => sum + expense.price, 0),
     [project],
@@ -26,7 +24,7 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
   );
 
   return (
-    <li>
+    <S.ProjectItem>
       <SCard.Card>
         <SCard.CardHeader>
           <S.StatusBox>
@@ -82,7 +80,7 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
           </SLink.Link>
         </SCard.CardFooter>
       </SCard.Card>
-    </li>
+    </S.ProjectItem>
   );
 };
 
