@@ -35,7 +35,7 @@
       />
       <path
         stroke="url(#g)"
-        stroke-width="2"
+        strokeWidth="2"
         d="m29.5 12.982 4.421 3.632a.5.5 0 0 1-.317.886H30a.5.5 0 0 0-.5.5v13.5a.5.5 0 0 1-.5.5H12a.5.5 0 0 1-.5-.5V18a.5.5 0 0 0-.5-.5H7.474a.5.5 0 0 1-.304-.897L20.685 6.241a.5.5 0 0 1 .622.01L27 10.93m2.5 2.053V8.5A.5.5 0 0 0 29 8h-1.5a.5.5 0 0 0-.5.5v2.429m2.5 2.053L27 10.93"
       />
       <path fill="url(#h)" stroke="url(#i)" d="M18.5 20.5h-3v3h3v-3Z" />
@@ -54,8 +54,8 @@
           y1="1"
           y2="41"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="b"
@@ -64,8 +64,8 @@
           y1="21"
           y2="21"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="c"
@@ -74,8 +74,8 @@
           y1="21"
           y2="21"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="d"
@@ -84,8 +84,8 @@
           y1="1"
           y2="41"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="e"
@@ -94,8 +94,8 @@
           y1="21"
           y2="21"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="f"
@@ -104,8 +104,8 @@
           y1="21"
           y2="21"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="g"
@@ -114,8 +114,8 @@
           y1="6"
           y2="32"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="h"
@@ -124,8 +124,8 @@
           y1="20.5"
           y2="23.5"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="i"
@@ -134,8 +134,8 @@
           y1="20.5"
           y2="23.5"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="j"
@@ -144,8 +144,8 @@
           y1="20.5"
           y2="23.5"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="k"
@@ -154,8 +154,8 @@
           y1="20.5"
           y2="23.5"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="l"
@@ -164,8 +164,8 @@
           y1="25.5"
           y2="28.5"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="m"
@@ -174,8 +174,8 @@
           y1="25.5"
           y2="28.5"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="n"
@@ -184,8 +184,8 @@
           y1="25.5"
           y2="28.5"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="o"
@@ -194,8 +194,8 @@
           y1="25.5"
           y2="28.5"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
         <linearGradient
           id="p"
@@ -204,8 +204,8 @@
           y1="2.5"
           y2="39.502"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C6935C" />
-          <stop offset="1" stop-color="#65696C" />
+          <stop stopColor="#C6935C" />
+          <stop offset="1" stopColor="#65696C" />
         </linearGradient>
       </defs>
     </svg>
