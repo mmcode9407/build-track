@@ -1,6 +1,8 @@
 ﻿import { LucideCircleCheck, LucideInfo, LucideTimer } from "lucide-react";
 
-export type StatusType = "PENDING" | "IN_PROGRESS" | "COMPLETED";
+import type { Enums } from "@/libs/supabase/database.types";
+
+export type StatusType = Enums<"project_status">;
 
 export const STATUS_ICONS: Record<StatusType, React.ReactElement> = {
   PENDING: <LucideTimer />,
