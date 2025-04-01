@@ -82,14 +82,3 @@ export const StyledTypography = styled.p<StyledTypographyProps>`
     `}
 `;
 
-export const Styles = css<StyledTypographyProps>`
-  ${({ $variant }) => getTypographyStyles(typographyStyles, $variant)};
-  color: ${({ theme, $color }) =>
-    $color ? theme.colors[$color] : theme.colors.primary};
-  ${({ $align }) =>
-    $align &&
-    css`
-      text-align: ${$align};
-    `}
-`;
-
