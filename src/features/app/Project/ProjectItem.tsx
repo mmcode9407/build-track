@@ -33,7 +33,9 @@ const ProjectItem = ({ ...project }: ProjectItemProps) => {
             <StatusBadge status={project.status} />
           </S.StatusBox>
 
-          <Typography variant="subtitle-2">{project.name}</Typography>
+          <Typography tag="h2" variant="subtitle-sm">
+            {project.name}
+          </Typography>
 
           <Typography variant="caption">{project.description}</Typography>
         </SCard.CardHeader>
@@ -54,9 +56,9 @@ const ProjectItem = ({ ...project }: ProjectItemProps) => {
           </S.ProgressBox>
 
           <S.TargetPriceBox>
-            <Typography variant="body-2">${project.budget}</Typography>
+            <Typography variant="body-sm">${project.budget}</Typography>
 
-            <Typography variant="caption" color="mutedForeground">
+            <Typography tag="span" variant="caption" color="mutedForeground">
               target
             </Typography>
           </S.TargetPriceBox>

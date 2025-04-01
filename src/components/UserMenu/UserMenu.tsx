@@ -27,9 +27,9 @@ const UserMenu = () => {
 
       <S.Menu gutter={8}>
         <S.MenuHeader>
-          <Typography variant="subtitle-1">{user?.username}</Typography>
+          <Typography variant="subtitle-lg">{user?.username}</Typography>
 
-          <Typography variant="body-2" color="mutedForeground">
+          <Typography variant="body-sm" color="mutedForeground">
             {user?.email}
           </Typography>
         </S.MenuHeader>

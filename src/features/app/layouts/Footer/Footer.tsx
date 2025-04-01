@@ -9,11 +9,11 @@ const Footer = () => {
   return (
     <S.Footer>
       <S.Title>
-        <Typography variant="body-2">Made with</Typography>
+        <Typography variant="body-sm">Made with</Typography>
 
         <S.HeartIcon />
 
-        <Typography variant="body-2">
+        <Typography variant="body-sm">
           <Link
             target="_blank"
             to="https://github.com/mmcode9407"
@@ -23,7 +23,7 @@ const Footer = () => {
         </Typography>
       </S.Title>
 
-      <Typography variant="body-2" align="center">
+      <Typography variant="body-sm" align="center">
         {currentYear} &copy; All rights reserved
       </Typography>
     </S.Footer>

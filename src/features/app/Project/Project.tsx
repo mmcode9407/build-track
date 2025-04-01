@@ -26,7 +26,9 @@ const Project = () => {
         <S.SectionTitle>
           <LucideCalendar />
 
-          <Typography variant="h4">My projects</Typography>
+          <Typography tag="h1" variant="title-md">
+            My projects
+          </Typography>
         </S.SectionTitle>
 
         <Button>Create new project</Button>
