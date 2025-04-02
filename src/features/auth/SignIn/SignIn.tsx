@@ -34,11 +34,13 @@ const SignIn = () => {
   return (
     <>
       <S.InnerContainer>
-        <SCard.Card $width="50%" $noBorder>
-          <SCard.CardHeader $vertical>
-            <Typography variant="h4">Welcome Back</Typography>
+        <SCard.Card $noBorder>
+          <SCard.CardHeader>
+            <Typography tag="h2" variant="title-md" align="center">
+              Welcome Back
+            </Typography>
 
-            <Typography variant="body-1" color="mutedForeground" align="center">
+            <Typography color="mutedForeground" align="center">
               Login to your BuildTrack account
             </Typography>
           </SCard.CardHeader>
@@ -47,7 +49,7 @@ const SignIn = () => {
             <SignInForm onSubmit={onSubmit} isPending={isPending} />
           </SCard.CardContent>
 
-          <SCard.CardFooter>
+          <SCard.CardFooter $center>
             <Typography variant="caption" color="mutedForeground">
               Don't have an account?{" "}
               <SLink.Link to="/sign-up">Sign Up</SLink.Link>

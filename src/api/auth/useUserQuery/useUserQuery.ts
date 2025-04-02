@@ -1,24 +1,29 @@
 ﻿import { useQuery } from "@tanstack/react-query";
 
-import { supabaseClient } from "@/libs/supabaseClient";
+import type { GetUserResponse } from "@/api/auth/useUserQuery/types";
+import { supabaseClient } from "@/libs/supabase/supabaseClient";
 
 import { tags } from "./tags";
-import type { GetMeUserResponse } from "./types";
 
-const getUser = async (): Promise<GetMeUserResponse> => {
-  const { data, error } = await supabaseClient.auth.getUser();
+const getUser = async (): Promise<GetUserResponse> => {
+  const { data: authUser, error: authError } =
+    await supabaseClient.auth.getUser();
+
+  if (authError) {
+    throw authError;
+  }
+
+  const { data: user, error } = await supabaseClient
+    .from("users")
+    .select()
+    .eq("id", authUser.user.id)
+    .single();
 
   if (error) {
     throw error;
   }
 
-  const mappedUser: GetMeUserResponse = {
-    username: data.user.user_metadata.username,
-    email: data.user.user_metadata.email,
-    id: data.user.user_metadata.sub,
-  };
-
-  return mappedUser;
+  return user;
 };
 
 export const useUserQuery = () =>

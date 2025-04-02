@@ -1,9 +1,9 @@
 ﻿import styled from "styled-components";
 
-import { flexCenteredRow } from "@/styles/helpers";
-
 const InnerContainer = styled.div`
-  ${flexCenteredRow};
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
 
   max-width: 758px;
   border: ${({ theme }) => `1px solid ${theme.colors.border}`};
@@ -13,8 +13,7 @@ const InnerContainer = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  width: 50%;
-  height: 100%;
+  width: 100%;
 `;
 
 const Image = styled.img`

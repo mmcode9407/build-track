@@ -1,6 +1,6 @@
 ﻿import { useMutation } from "@tanstack/react-query";
 
-import { supabaseClient } from "@/libs/supabaseClient";
+import { supabaseClient } from "@/libs/supabase/supabaseClient";
 
 import type { SignUpMutationArgs } from "./types";
 

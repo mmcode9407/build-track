@@ -42,11 +42,10 @@ const buttonStyles: Record<ButtonVariants, RuleSet<object>> = {
   link: css`
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.primary};
-    text-decoration: underline;
-    text-decoration-color: transparent;
+    border: 1px solid transparent;
 
     &:hover {
-      text-decoration-color: ${({ theme }) => theme.colors.primary};
+      border-color: ${({ theme }) => theme.colors.primary};
     }
   `,
   icon: css`
@@ -96,12 +95,13 @@ export const Button = styled(AriaButton)<ButtonProps>`
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
   line-height: ${({ theme }) => theme.lineHeight.normal};
-  border-radius: ${({ theme }) => theme.borders["rounded-md"]};
+  border-radius: ${({ theme, $variant }) =>
+    $variant !== "link" && theme.borders["rounded-md"]};
   transition:
     opacity 0.3s ease-in-out,
-    text-decoration 0.3s ease-in-out,
     background-color 0.3s ease-in-out,
-    color 0.3s ease-in-out;
+    color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
 
   ${({ $fullWidth }) =>
     $fullWidth &&

@@ -1,8 +1,14 @@
 ﻿import "styled-components";
 
-import type { theme } from "./theme";
+import type { DarkColorsType, LightColorsType } from "@/styles/themeConfig";
 
-type ThemeType = typeof theme;
+import type { baseTheme } from "./theme";
+
+type DynamicColors = LightColorsType | DarkColorsType;
+
+type ThemeType = typeof baseTheme & {
+  colors: DynamicColors;
+};
 
 declare module "styled-components" {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
