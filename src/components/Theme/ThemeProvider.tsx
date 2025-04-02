@@ -4,7 +4,7 @@ import { ThemeProvider as BaseThemeProvider } from "styled-components";
 import { baseTheme } from "@/styles/theme";
 import { darkColorsConfig, lightColorsConfig } from "@/styles/themeConfig";
 
-enum ThemeMode {
+export enum ThemeMode {
   LIGHT = "light",
   DARK = "dark",
 }

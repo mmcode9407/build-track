@@ -13,7 +13,7 @@ import * as S from "./UserMenu.styled";
 
 const UserMenu = () => {
   const { data: user } = useUserQuery();
-  const { mutate: signOut, isPending } = useSignOutMutation();
+  const { mutate: signOut, isPending: isSignOutPending } = useSignOutMutation();
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
@@ -47,7 +47,7 @@ const UserMenu = () => {
             variant="link"
             onClick={handleSignOut}
             fullWidth
-            disabled={isPending}>
+            disabled={isSignOutPending}>
             <LucideLogOut /> Log out
           </Button>
         </S.MenuItem>
