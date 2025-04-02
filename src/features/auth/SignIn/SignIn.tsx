@@ -36,11 +36,11 @@ const SignIn = () => {
       <S.InnerContainer>
         <SCard.Card $noBorder>
           <SCard.CardHeader>
-            <Typography variant="h4" align="center">
+            <Typography tag="h2" variant="title-md" align="center">
               Welcome Back
             </Typography>
 
-            <Typography variant="body-1" color="mutedForeground" align="center">
+            <Typography color="mutedForeground" align="center">
               Login to your BuildTrack account
             </Typography>
           </SCard.CardHeader>

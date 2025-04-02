@@ -1,5 +1,11 @@
 ﻿import styled from "styled-components";
 
+import { fadeInFromTop } from "@/styles/animations";
+
+export const ProjectItem = styled.li`
+  animation: ${fadeInFromTop} 0.5s ease-in-out;
+`;
+
 export const StatusBox = styled.div`
   display: flex;
   justify-content: space-between;

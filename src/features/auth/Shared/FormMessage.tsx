@@ -6,7 +6,7 @@ type FormMessageProps = {
 
 const FormMessage = ({ errorMessage }: FormMessageProps) => {
   return (
-    <Typography variant="caption" color="error" aria-live="polite">
+    <Typography tag="span" variant="caption" color="error" aria-live="polite">
       {errorMessage}
     </Typography>
   );

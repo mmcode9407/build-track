@@ -3,7 +3,6 @@ import type { DefaultTheme } from "styled-components";
 import styled, { css } from "styled-components";
 
 type VariantStyle = {
-  tag: keyof React.JSX.IntrinsicElements;
   size: keyof DefaultTheme["fontSize"];
   weight: keyof DefaultTheme["fontWeight"];
   lineHeight: keyof DefaultTheme["lineHeight"];
@@ -11,16 +10,13 @@ type VariantStyle = {
 };
 
 export type TypographyVariants =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "subtitle-1"
-  | "subtitle-2"
-  | "body-1"
-  | "body-2"
+  | "title-lg"
+  | "title-md"
+  | "title-sm"
+  | "subtitle-lg"
+  | "subtitle-sm"
+  | "body-lg"
+  | "body-sm"
   | "caption"
   | "caption-bold"
   | "overline";
@@ -32,35 +28,28 @@ type StyledTypographyProps = {
 };
 
 export const typographyStyles: Record<TypographyVariants, VariantStyle> = {
-  h1: { tag: "h1", size: "4xl", weight: "bold", lineHeight: "tight" },
-  h2: { tag: "h2", size: "3xl", weight: "bold", lineHeight: "tight" },
-  h3: { tag: "h3", size: "2xl", weight: "bold", lineHeight: "normal" },
-  h4: { tag: "h4", size: "xl", weight: "bold", lineHeight: "normal" },
-  h5: { tag: "h5", size: "lg", weight: "bold", lineHeight: "normal" },
-  h6: { tag: "h6", size: "lg", weight: "bold", lineHeight: "tight" },
-  "subtitle-1": {
-    tag: "p",
+  "title-lg": { size: "3xl", weight: "bold", lineHeight: "tight" },
+  "title-md": { size: "2xl", weight: "bold", lineHeight: "tight" },
+  "title-sm": { size: "xl", weight: "bold", lineHeight: "normal" },
+  "subtitle-lg": {
     size: "base",
     weight: "semibold",
     lineHeight: "normal",
   },
-  "subtitle-2": {
-    tag: "p",
+  "subtitle-sm": {
     size: "sm",
     weight: "semibold",
     lineHeight: "normal",
   },
-  "body-1": { tag: "p", size: "base", weight: "normal", lineHeight: "normal" },
-  "body-2": { tag: "p", size: "sm", weight: "normal", lineHeight: "normal" },
-  caption: { tag: "span", size: "xs", weight: "normal", lineHeight: "normal" },
+  "body-lg": { size: "base", weight: "normal", lineHeight: "normal" },
+  "body-sm": { size: "sm", weight: "normal", lineHeight: "normal" },
+  caption: { size: "xs", weight: "normal", lineHeight: "normal" },
   "caption-bold": {
-    tag: "span",
     size: "xs",
     weight: "bold",
     lineHeight: "normal",
   },
   overline: {
-    tag: "span",
     size: "xs",
     weight: "bold",
     lineHeight: "normal",
@@ -92,3 +81,4 @@ export const StyledTypography = styled.p<StyledTypographyProps>`
       text-align: ${$align};
     `}
 `;
+

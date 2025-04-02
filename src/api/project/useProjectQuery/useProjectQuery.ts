@@ -1,4 +1,5 @@
-﻿import { useQuery } from "@tanstack/react-query";
+﻿import type { UseQueryOptions } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { projectsWithExpensesPriceQuery } from "@/api/project/useProjectQuery/queries";
 import type { ProjectsWithExpensesPrice } from "@/api/project/useProjectQuery/types";
@@ -24,8 +25,15 @@ const getProjectsList = async (
   return data;
 };
 
-export const useProjectQuery = (userId?: string) =>
-  useQuery({
+export const useProjectQuery = (
+  userId?: string,
+  options?: Omit<
+    UseQueryOptions<ProjectsWithExpensesPrice, Error>,
+    "queryKey" | "queryFn"
+  >,
+) =>
+  useQuery<ProjectsWithExpensesPrice>({
     queryKey: [tags.GET_PROJECTS_LIST, userId],
     queryFn: () => getProjectsList(userId),
+    ...options,
   });

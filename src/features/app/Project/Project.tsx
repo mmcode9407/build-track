@@ -3,6 +3,7 @@
 import { useUserQuery } from "@/api/auth/useUserQuery";
 import { useProjectQuery } from "@/api/project/useProjectQuery";
 import { Placeholder } from "@/components/Placeholder/Placeholder";
+import { Spinner } from "@/components/Spinner/Spinner";
 import { Button } from "@/components/ui/Button/Button";
 import { Typography } from "@/components/ui/Typography/Typography";
 
@@ -11,7 +12,13 @@ import { ProjectItem } from "./ProjectItem";
 
 const Project = () => {
   const { data: user } = useUserQuery();
-  const { data: projects } = useProjectQuery(user?.id);
+  const {
+    data: projects,
+    isLoading,
+    isSuccess,
+  } = useProjectQuery(user?.id, {
+    enabled: !!user?.id,
+  });
 
   return (
     <S.Section>
@@ -19,19 +26,25 @@ const Project = () => {
         <S.SectionTitle>
           <LucideCalendar />
 
-          <Typography variant="h4">My projects</Typography>
+          <Typography tag="h1" variant="title-md">
+            My projects
+          </Typography>
         </S.SectionTitle>
 
         <Button>Create new project</Button>
       </S.SectionHeader>
 
-      {projects && projects.length ? (
+      {isLoading && <Spinner />}
+
+      {isSuccess && projects.length > 0 && (
         <S.ProjectsList>
           {projects.map((project) => (
-            <ProjectItem key={project.id} project={project} />
+            <ProjectItem key={project.id} {...project} />
           ))}
         </S.ProjectsList>
-      ) : (
+      )}
+
+      {isSuccess && projects.length === 0 && (
         <Placeholder label="No projects yet" />
       )}
     </S.Section>

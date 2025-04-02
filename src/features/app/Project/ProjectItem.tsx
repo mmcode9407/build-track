@@ -11,11 +11,9 @@ import { Typography } from "@/components/ui/Typography/Typography";
 
 import * as S from "./ProjectItem.styled";
 
-type ProjectItemProps = {
-  project: ProjectsWithExpensesPrice[number];
-};
+type ProjectItemProps = ProjectsWithExpensesPrice[number];
 
-const ProjectItem = ({ project }: ProjectItemProps) => {
+const ProjectItem = ({ ...project }: ProjectItemProps) => {
   const totalExpensesPrice = useMemo(
     () => project.expenses.reduce((sum, expense) => sum + expense.price, 0),
     [project],
@@ -26,7 +24,7 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
   );
 
   return (
-    <li>
+    <S.ProjectItem>
       <SCard.Card>
         <SCard.CardHeader>
           <S.StatusBox>
@@ -35,7 +33,9 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
             <StatusBadge status={project.status} />
           </S.StatusBox>
 
-          <Typography variant="subtitle-2">{project.name}</Typography>
+          <Typography tag="h2" variant="subtitle-sm">
+            {project.name}
+          </Typography>
 
           <Typography variant="caption">{project.description}</Typography>
         </SCard.CardHeader>
@@ -56,9 +56,9 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
           </S.ProgressBox>
 
           <S.TargetPriceBox>
-            <Typography variant="body-2">${project.budget}</Typography>
+            <Typography variant="body-sm">${project.budget}</Typography>
 
-            <Typography variant="caption" color="mutedForeground">
+            <Typography tag="span" variant="caption" color="mutedForeground">
               target
             </Typography>
           </S.TargetPriceBox>
@@ -82,7 +82,7 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
           </SLink.Link>
         </SCard.CardFooter>
       </SCard.Card>
-    </li>
+    </S.ProjectItem>
   );
 };
 

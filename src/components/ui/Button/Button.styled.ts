@@ -42,9 +42,7 @@ const buttonStyles: Record<ButtonVariants, RuleSet<object>> = {
   link: css`
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.primary};
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: transparent;
+    border: 1px solid transparent;
 
     &:hover {
       border-color: ${({ theme }) => theme.colors.primary};

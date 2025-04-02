@@ -20,7 +20,9 @@ export const Placeholder = ({
     <S.Container>
       {icon}
 
-      <Typography variant="h3">{label}</Typography>
+      <Typography tag="h3" variant="title-md">
+        {label}
+      </Typography>
 
       {button && button}
     </S.Container>

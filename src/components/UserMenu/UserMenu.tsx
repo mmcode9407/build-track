@@ -13,7 +13,7 @@ import * as S from "./UserMenu.styled";
 
 const UserMenu = () => {
   const { data: user } = useUserQuery();
-  const { mutate: signOut } = useSignOutMutation();
+  const { mutate: signOut, isPending: isSignOutPending } = useSignOutMutation();
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
@@ -27,9 +27,9 @@ const UserMenu = () => {
 
       <S.Menu gutter={8}>
         <S.MenuHeader>
-          <Typography variant="subtitle-1">{user?.username}</Typography>
+          <Typography variant="subtitle-lg">{user?.username}</Typography>
 
-          <Typography variant="body-2" color="mutedForeground">
+          <Typography variant="body-sm" color="mutedForeground">
             {user?.email}
           </Typography>
         </S.MenuHeader>
@@ -43,7 +43,11 @@ const UserMenu = () => {
         <Separator />
 
         <S.MenuItem>
-          <Button variant="link" onClick={handleSignOut} fullWidth>
+          <Button
+            variant="link"
+            onClick={handleSignOut}
+            fullWidth
+            disabled={isSignOutPending}>
             <LucideLogOut /> Log out
           </Button>
         </S.MenuItem>

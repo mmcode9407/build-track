@@ -36,11 +36,14 @@ const SignUp = () => {
       <S.InnerContainer>
         <SCard.Card $noBorder>
           <SCard.CardHeader>
-            <Typography variant="h4" align="center">
+            <Typography tag="h2" variant="title-md" align="center">
               Create account
             </Typography>
 
-            <Typography variant="body-1" color="mutedForeground" align="center">
+            <Typography
+              variant="body-lg"
+              color="mutedForeground"
+              align="center">
               Create your account and let's start save money with your
               BuildTrack
             </Typography>
