@@ -1,24 +1,25 @@
 ﻿import * as Ariakit from "@ariakit/react";
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, useRouter } from "@tanstack/react-router";
 import { LucideLogOut } from "lucide-react";
 
-import { useSignOutMutation } from "@/api/auth/useSignOutMutation";
-import { useUserQuery } from "@/api/auth/useUserQuery";
 import { Button } from "@/components/ui/Button/Button";
 import * as Slink from "@/components/ui/Link/Link.styled";
 import { Separator } from "@/components/ui/Separator/Separator.styled";
 import { Typography } from "@/components/ui/Typography/Typography";
+import { useAuth } from "@/context/AuthContext/AuthContext";
 
 import * as S from "./UserMenu.styled";
 
 const UserMenu = () => {
-  const { data: user } = useUserQuery();
-  const { mutate: signOut, isPending: isSignOutPending } = useSignOutMutation();
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSignOut = async () => {
     signOut();
-    navigate({ to: "/sign-in" });
+
+    await router.invalidate();
+    await navigate({ to: "/sign-in" });
   };
 
   return (
@@ -47,7 +48,8 @@ const UserMenu = () => {
             variant="link"
             onClick={handleSignOut}
             fullWidth
-            disabled={isSignOutPending}>
+            // disabled={isSignOutPending}
+          >
             <LucideLogOut /> Log out
           </Button>
         </S.MenuItem>

@@ -1,23 +1,23 @@
 ﻿import { LucideCalendar } from "lucide-react";
 
-import { useUserQuery } from "@/api/auth/useUserQuery";
 import { useProjectQuery } from "@/api/project/useProjectQuery";
 import { Placeholder } from "@/components/Placeholder/Placeholder";
 import { Spinner } from "@/components/Spinner/Spinner";
 import { Button } from "@/components/ui/Button/Button";
 import { Typography } from "@/components/ui/Typography/Typography";
+import { useAuth } from "@/context/AuthContext/AuthContext";
 
 import * as S from "./Project.styled";
 import { ProjectItem } from "./ProjectItem";
 
 const Project = () => {
-  const { data: user } = useUserQuery();
+  const { user } = useAuth();
   const {
     data: projects,
     isLoading,
     isSuccess,
   } = useProjectQuery(user?.id, {
-    enabled: !!user?.id,
+    enabled: !!user,
   });
 
   return (

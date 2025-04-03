@@ -2,18 +2,28 @@
 import { RouterProvider } from "@tanstack/react-router";
 
 import { ThemeProvider } from "@/components/Theme/ThemeProvider";
+import { useAuth } from "@/context/AuthContext/AuthContext";
+import { AuthProvider } from "@/context/AuthContext/AuthContext";
 import { queryClient } from "@/libs/queryClient";
 import { router } from "@/libs/router";
 import { GlobalStyles } from "@/styles/globalStyles";
 
+function InnerApp() {
+  const auth = useAuth();
+
+  return <RouterProvider router={router} context={{ auth }} />;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <GlobalStyles />
+      <AuthProvider>
+        <ThemeProvider>
+          <GlobalStyles />
 
-        <RouterProvider router={router} />
-      </ThemeProvider>
+          <InnerApp />
+        </ThemeProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
